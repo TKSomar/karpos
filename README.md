@@ -34,7 +34,7 @@ Bonus
 - <span style="color: gold">User can follow/friend another user</span>
 - <span style="color: gold">User can change their profile picture from the randomly generated default</span>
 
-### View
+### Views
 
 - What views do you need to create to meet each feature in your app?
 
