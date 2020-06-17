@@ -78,3 +78,5 @@ Bonus
 - DELETE - <span style="color: green">(/api/wishlist/:fruit_id)</span> remove fruit from wishlist
 
 ### Schema
+
+<img src="./views/schema.png" />
