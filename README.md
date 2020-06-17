@@ -69,6 +69,13 @@ Bonus
 - editPost (/api/posts/:post_id)
 - deletePost (/api/posts/:post_id)
 
+#### commentCtrl.js
+
+- newComment (/api/comments/)
+- getComments (/api/comments/)
+- editComment (/api/comments/:comment_id)
+- deleteComment (/api/comments/:comment_id)
+
 #### fruitCtrl.js
 
 - getFruits (/api/fruits)
