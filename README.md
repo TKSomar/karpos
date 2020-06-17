@@ -54,7 +54,29 @@ Bonus
 
 ### Controllers
 
+#### authCtrl.js
 
+- login (/auth/login)
+- register (/auth/register)
+- logout (/auth/logout)
+- getUser (/auth/user)
+
+#### postCtrl.js
+
+- getPosts (/api/posts)
+- getUsersPosts (/api/posts/:user_id)
+- newPost (/api/posts)
+- editPost (/api/posts/:post_id)
+- deletePost (/api/posts/:post_id)
+
+#### fruitCtrl.js
+
+- getFruits (/api/fruits)
+- getFruitsByName (/api/fruits/:name)
+- getSavedFruits (/api/saved_fruits/:user_id)
+- saveFruit (/api/saved_fruits)
+- getWishlist (/api/wishlist/:user_id)
+- savedToWishlist (/api/wishlist)
 
 ### Endpoints
 
