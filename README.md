@@ -58,23 +58,23 @@ Bonus
 
 ### Endpoints
 
-- GET - get list of fruits from db
-- GET - get list of posts from db
-- GET - get list of user's posts from db
-- GET - get list of user's saved fruit list from db
-- GET - get list of user's fruit wishlist from db
-- GET - get comments from db
-- GET - get user
-- POST - post fruit to saved fruit table in db
-- POST - post fruit to wishlist table in db
-- POST - post comment to table in db
-- POST - register user in db
-- POST - login user
-- PUT - edit comment
-- PUT - edit post
-- PUT - edit name of fruit, description, and image
-- DELETE - logout user
-- DELETE - remove fruit from saved list
-- DELETE - remove fruit from wishlist
+- GET - <span style="color: green">(/api/fruits)</span> get list of fruits from db
+- GET - <span style="color: green">(/api/posts)</span> get list of posts from db
+- GET - <span style="color: green">(/api/posts/:user_id)</span> get list of user's posts from db
+- GET - <span style="color: green">(/api/saved_fruits/:user_id)</span> get list of user's saved fruit list from db
+- GET - <span style="color: green">(/api/wishlist/:user_id)</span> get list of user's fruit wishlist from db
+- GET - <span style="color: green">(/api/comments)</span> get comments from db
+- GET - <span style="color: green">(/auth/user)</span> get user
+- POST - <span style="color: green">(/api/saved_fruits)</span> post fruit to saved fruit table in db
+- POST - <span style="color: green">(/api/wishlist)</span> post fruit to wishlist table in db
+- POST - <span style="color: green">(/api/comments)</span> post comment to table in db
+- POST - <span style="color: green">(/auth/register)</span> register user in db
+- POST - <span style="color: green">(/auth/login)</span> login user
+- PUT - <span style="color: green">(/api/comments/:comment_id)</span> edit comment
+- PUT - <span style="color: green">(/api/posts/:post_id)</span> edit post
+- PUT - <span style="color: green">(/api/fruits/:fruit_id)</span> edit name of fruit, description, and image
+- DELETE - <span style="color: green">(/auth/logout)</span> logout user
+- DELETE - <span style="color: green">(/api/saved_fruits/:fruit_id)</span> remove fruit from saved list
+- DELETE - <span style="color: green">(/api/wishlist/:fruit_id)</span> remove fruit from wishlist
 
 ### Schema
