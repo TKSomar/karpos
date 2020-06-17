@@ -44,7 +44,12 @@ Bonus
 
 <p>There will be icons for each view in a global navigation component.</p>
 
-
+<img src="./views/authentication.jpg" width="450px" />
+<img src="./views/register.jpg" width="450px" />
+<img src="./views/dashboard.jpg" width="450px" />
+<img src="./views/posts.jpg" width="450px" />
+<img src="./views/new_post.jpg" width="450px" />
+<img src="./views/profile.jpg" width="450px" />
 
 
 ### Controllers
