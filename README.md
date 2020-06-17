@@ -53,6 +53,23 @@ Bonus
 
 ### Endpoints
 
-
+- GET - get list of fruits from db
+- GET - get list of posts from db
+- GET - get list of user's posts from db
+- GET - get list of user's saved fruit list from db
+- GET - get list of user's fruit wishlist from db
+- GET - get comments from db
+- GET - get user
+- POST - post fruit to saved fruit table in db
+- POST - post fruit to wishlist table in db
+- POST - post comment to table in db
+- POST - register user in db
+- POST - login user
+- PUT - edit comment
+- PUT - edit post
+- PUT - edit name of fruit, description, and image
+- DELETE - logout user
+- DELETE - remove fruit from saved list
+- DELETE - remove fruit from wishlist
 
 ### Schema
