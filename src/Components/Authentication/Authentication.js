@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
-import e from 'express';
 
 class Auth extends Component {
     constructor(props) {
@@ -25,7 +24,7 @@ class Auth extends Component {
 
     login() {
         axios.post('/api/auth/login', this.state)
-        .then(rex => {
+        .then(res => {
             this.props.updateUser(res.data);
             this.props.history.push('/dashbaord');
         })
