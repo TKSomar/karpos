@@ -112,4 +112,4 @@ Bonus
 
 ### Component Tree
 
-<img src="./views/component_tree.png" />
+<img src="./views/component_tree.PNG" width="500px" />
