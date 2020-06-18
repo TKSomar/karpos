@@ -109,3 +109,7 @@ Bonus
 ### Schema
 
 <img src="./views/schema.png" />
+
+### Component Tree
+
+<img src="./views/component_tree.png" />
