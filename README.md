@@ -56,10 +56,10 @@ Bonus
 
 #### authCtrl.js
 
-- login (/auth/login)
-- register (/auth/register)
-- logout (/auth/logout)
-- getUser (/auth/user)
+- login (/api/auth/login)
+- register (/api/auth/register)
+- logout (/api/auth/logout)
+- getUser (/api/auth/user)
 
 #### postCtrl.js
 
