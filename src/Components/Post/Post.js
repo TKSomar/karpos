@@ -14,7 +14,7 @@ class Post extends Component {
 
     submit() {
         axios.post('/api/post', this.state)
-        .then(res => this.props.history.push('/dashboard'))
+        .then(res => this.props.history.push('/posts'))
         .catch(err => alert('Make sure you are logged in to create a new post.'))
     }
 
