@@ -26,30 +26,30 @@ app.use(
 
 
 //auth endpoints
-app.post('/api/auth/login', authCtrl.login);
-app.post('/api/auth/register', authCtrl.register);
-app.delete('/api/auth/logout', authCtrl.logout);
+// app.post('/api/auth/login', authCtrl.login);
+// app.post('/api/auth/register', authCtrl.register);
+// app.delete('/api/auth/logout', authCtrl.logout);
 
-//post endpoints
-app.get('/api/posts', postCtrl.getPosts);
-app.get('/api/posts/:user_id', postCtrl.getUsersPosts);
-app.post('/api/posts', postCtrl.newPost);
-app.put('/api/posts/:post_id', postCtrl.editPost);
-app.delete('/api/posts/:post_id', postCtrl.deletePost);
+// //post endpoints
+// app.get('/api/posts', postCtrl.getPosts);
+// app.get('/api/posts/:user_id', postCtrl.getUsersPosts);
+// app.post('/api/posts', postCtrl.newPost);
+// app.put('/api/posts/:post_id', postCtrl.editPost);
+// app.delete('/api/posts/:post_id', postCtrl.deletePost);
 
-//comment endpoints
-app.get('/api/comments', commentCtrl.getComments);
-app.post('/api/comments', commentCtrl.newComment);
-app.put('/api/commnets/:comment_id', commentCtrl.editComment);
-app.delete('/api/comments/:comment_id', commentCtrl.deleteComment);
+// //comment endpoints
+// app.get('/api/comments', commentCtrl.getComments);
+// app.post('/api/comments', commentCtrl.newComment);
+// app.put('/api/commnets/:comment_id', commentCtrl.editComment);
+// app.delete('/api/comments/:comment_id', commentCtrl.deleteComment);
 
-//fruit endpoints
-app.get('/api/fruits', fruitCtrl.getFruits);
-app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
-app.get('/api/saved_fruits/:user_id', fruitCtrl.getSavedFruits);
-app.get('/api/wishlist/:user_id', fruitCtrl.getWishlist);
-app.put('/api/saved_fruits', fruitCtrl.saveFruit);
-app.put('/api/wishlist', fruitCtrl.savedToWishlist);
+// //fruit endpoints
+// app.get('/api/fruits', fruitCtrl.getFruits);
+// app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
+// app.get('/api/saved_fruits/:user_id', fruitCtrl.getSavedFruits);
+// app.get('/api/wishlist/:user_id', fruitCtrl.getWishlist);
+// app.put('/api/saved_fruits', fruitCtrl.saveFruit);
+// app.put('/api/wishlist', fruitCtrl.savedToWishlist);
 
 massive({
     connectionString: CONNECTION_STRING,
@@ -58,4 +58,4 @@ massive({
     app.set('db', db)
     console.log('Now connected to db.')
     app.listen ( SERVER_PORT, () => console.log(`Connected on port ${SERVER_PORT}`))
-}).carch(err => console.log(err));
+}).catch(err => console.log(err));
