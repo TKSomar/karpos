@@ -78,12 +78,17 @@ Bonus
 
 #### fruitCtrl.js
 
-- getFruits (/api/fruits)
-- getFruitsByName (/api/fruits/:name)
+- getFruits (/api/fruit)
+- getFruitsByName (/api/fruit/:name)
 - getSavedFruits (/api/saved_fruits/:user_id)
 - saveFruit (/api/saved_fruits)
 - getWishlist (/api/wishlist/:user_id)
 - savedToWishlist (/api/wishlist)
+
+
+### API
+
+- https://www.fruityvice.com/ - fruit data
 
 ### Endpoints
 
