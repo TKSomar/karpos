@@ -2,6 +2,7 @@ import React from 'react';
 import routes from './routes';
 import {connect} from 'react-redux';
 import './App.css';
+import './index.css';
 
 function App() {
   return (

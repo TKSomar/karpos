@@ -6,6 +6,9 @@
 .App {
   box-sizing: border-box;
   margin: 0;
+}
+
+body {
   font-family: 'GFS Neohellenic', sans-serif;
 }
 
@@ -52,6 +55,7 @@
 .auth_logo {
   font-size: 45px;
   color: #2C0073;
+  font-weight: 400;
 }
 
 .auth_input_box {
