@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
+import {Link} from 'react-router-dom';
 
 class Auth extends Component {
     constructor(props) {
@@ -50,7 +51,7 @@ class Auth extends Component {
                         </div>
 
                     <div className="auth_input_box">
-                        
+
                         <p className="auth_input_title">Password</p>
                         <input value={this.state.password} onChange={e => this.handleChange('username', e.target.value)} />
 
@@ -58,6 +59,7 @@ class Auth extends Component {
 
                     <div className="auth_button_container">
                         <button className="auth_button" onClick={this.login}>Login</button>
+                        <Link to={`/register`}><p className="auth_register_link">Don't have an account? Click here to create one.</p></Link>
                     </div>
                 </div>
             </div>
