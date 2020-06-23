@@ -33,19 +33,25 @@ class Auth extends Component {
     render() {
         return (
             <div className="Auth">
-                <div className="auth_container">
+
+                <div className="logo_container">
 
                     <h1 className="auth_logo">Karpós</h1>
+                    <p className="auth_subtitle">Discover fruit, health, and connect with others!</p>
+
+                </div>
+
+                <div className="auth_container">
 
                     <div className="auth_input_box">
 
-                        <p>Username:</p>
+                        <p className="auth_input_title">Username</p>
                         <input value={this.state.username} onChange={e => this.handleChange('username', e.target.value)} />
                         </div>
 
                         <div className="auth_input_box">
-                        <p>Password:</p>
-                        <input value={this.state.username} onChange={e => this.handleChange('username', e.target.value)} />
+                        <p className="auth_input_title">Password</p>
+                        <input value={this.state.password} onChange={e => this.handleChange('username', e.target.value)} />
 
                     </div>
 

@@ -13,16 +13,8 @@ class Dash extends Component {
         }
     }
 
-    getFruits() {
-        let {search, fruits} = this.state;
-        let url = '/api/fruits';
-        if (fruits && !search) {
-            url += '?mine=true';
-        } else if (!fruits && search) {
-            url += `?search=${search}`;
-        } else if (fruits && search) {
-            url += `?mine=true&search=${search}`;
-        }
+    componentDidMount() {
+        let url = 'https://www.fruityvice.com//api/fruit/all';
 
         axios.get(url)
         .then(res => {
@@ -31,11 +23,7 @@ class Dash extends Component {
     }
 
     reset() {
-        let {fruits} = this.state;
-        let url = '/api/fruits';
-        if (fruits) {
-            url += '?mine=true';
-        }
+        let url = 'https://www.fruityvice.com//api/fruit/all';
 
         axios.get(url)
         .then(res => {
@@ -45,12 +33,11 @@ class Dash extends Component {
 
     render() {
         let fruits = this.state.fruits.map((elem) => {
-            return <Link to={`/fruits/${elem.fruit_id}`} key={elem.fruit_id}>
+            return <Link to={`/fruits/${elem.id}`} key={elem.id}>
                 <div className="content_box dashboard_fruit_box">
                     <h2>{elem.name}</h2>
                     <div className="fruit_box">
-                    <img src={elem.image_url} width="80%" height="50%" alt="fruit" />
-                    <p>{elem.description}</p>
+                    <p>{elem.family}</p>
                     </div>
                 </div>
             </Link>
@@ -59,7 +46,7 @@ class Dash extends Component {
         return (
             <div className="Dash">
                 <div className="content_box">
-
+                    {fruits}
                 </div>
             </div>
         )
