@@ -49,7 +49,8 @@ class Auth extends Component {
                         <input value={this.state.username} onChange={e => this.handleChange('username', e.target.value)} />
                         </div>
 
-                        <div className="auth_input_box">
+                    <div className="auth_input_box">
+                        
                         <p className="auth_input_title">Password</p>
                         <input value={this.state.password} onChange={e => this.handleChange('username', e.target.value)} />
 
