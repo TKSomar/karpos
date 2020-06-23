@@ -6,6 +6,7 @@
 .App {
   box-sizing: border-box;
   margin: 0;
+  font-family: 'GFS Neohellenic', sans-serif;
 }
 
 /* Authentication */
