@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import Nav from '../Nav/Nav';
 
 class Dash extends Component {
     constructor(props) {
@@ -45,9 +46,10 @@ class Dash extends Component {
 
         return (
             <div className="Dash">
-                <div className="content_box">
-                    {fruits}
-                </div>
+                <Nav />
+                    <div className="content_box">
+                        {fruits}
+                    </div>
             </div>
         )
     }

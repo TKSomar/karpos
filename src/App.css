@@ -169,3 +169,14 @@ body {
   border: none;
   width: 80%;
 }
+
+/* Nav */
+
+.Nav {
+  width: 100%;
+  height: 100px;
+  position: fixed;
+  top: 0;
+  padding-left: 20px;
+  background-color: #C4C4C4; 
+}

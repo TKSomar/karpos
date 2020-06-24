@@ -1,9 +1,9 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import home from './home.png';
-import posts from './posts.png';
-import post from './posts.png';
-import logout from './logout.png';
+import {FaHome} from 'react-icons/fa';
+import {FaComments} from 'react-icons/fa';
+import {FaEdit} from 'react-icons/fa';
+import {FaSignOut} from 'react-icons/fa';
 
 export default class Nav extends Component {
     render() {
@@ -15,15 +15,15 @@ export default class Nav extends Component {
 
                     <div className="nav_routes_icons_container">
                         <Link to="/dashboard">
-                            <img src={home} alt="home" />
+                            <FaHome />
                         </Link>
 
                         <Link to="/posts">
-                            <img src={posts} alt="posts" />
+                            <FaComments />
                         </Link>
 
                         <Link to="/post">
-                            <img src={post} alt="post" />
+                            <FaEdit />
                         </Link>
                     </div>
 
@@ -32,7 +32,7 @@ export default class Nav extends Component {
                     </div>
 
                     <div className="nav_logout_icon_container">
-                        <img src={logout} alt="logout" />
+                        <FaSignOut />
                     </div>
             </div>
         )
