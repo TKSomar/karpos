@@ -47,9 +47,6 @@ class Dash extends Component {
         return (
             <div className="Dash">
                 <Nav />
-                    <div className="content_box">
-                        {fruits}
-                    </div>
             </div>
         )
     }

@@ -1,29 +1,26 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {FaHome} from 'react-icons/fa';
-import {FaComments} from 'react-icons/fa';
-import {FaEdit} from 'react-icons/fa';
-import {FaSignOut} from 'react-icons/fa';
+import {MDBIcon} from 'mdbreact';
 
 export default class Nav extends Component {
     render() {
         return (
             <div className="Nav">
                 <div className="nav_logo_container">
-                    <h1>Karpós</h1>
+                    <h1 className="nav_logo">Karpós</h1>
                 </div>
 
                     <div className="nav_routes_icons_container">
                         <Link to="/dashboard">
-                            <FaHome />
+                            <MDBIcon icon="home" className="white-tex" />
                         </Link>
 
                         <Link to="/posts">
-                            <FaComments />
+                            <MDBIcon far icon="comments" className="white-tex" />
                         </Link>
 
                         <Link to="/post">
-                            <FaEdit />
+                            <MDBIcon far icon="edit" className="white-tex" />
                         </Link>
                     </div>
 
@@ -32,7 +29,7 @@ export default class Nav extends Component {
                     </div>
 
                     <div className="nav_logout_icon_container">
-                        <FaSignOut />
+                        <MDBIcon icon="sign-out-alt" className="white-text" size="2x" />
                     </div>
             </div>
         )
