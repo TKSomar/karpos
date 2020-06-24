@@ -12,15 +12,15 @@ export default class Nav extends Component {
 
                     <div className="nav_routes_icons_container">
                         <Link to="/dashboard">
-                            <MDBIcon icon="home" className="white-tex" />
+                            <MDBIcon icon="home" className="white-text" />
                         </Link>
 
                         <Link to="/posts">
-                            <MDBIcon far icon="comments" className="white-tex" />
+                            <MDBIcon far icon="comments" className="white-text" />
                         </Link>
 
                         <Link to="/post">
-                            <MDBIcon far icon="edit" className="white-tex" />
+                            <MDBIcon far icon="edit" className="white-text" />
                         </Link>
                     </div>
 
