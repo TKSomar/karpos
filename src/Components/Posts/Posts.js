@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Nav from '../Nav/Nav';
 
 class Posts extends Component {
     constructor(props) {
@@ -16,7 +17,13 @@ class Posts extends Component {
     render() {
       return (
         <div className='Posts'>
-          This is the Posts Component.
+
+          <Nav />
+
+          <div className="posts_container">
+            This is the Posts Component.
+          </div>
+
         </div>
       )
     }

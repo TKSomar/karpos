@@ -1,9 +1,14 @@
 import React, {Component} from 'react';
 import {Link} from 'react-router-dom';
-import {MDBIcon} from 'mdbreact';
+import {BsFillHouseDoorFill} from 'react-icons/bs';
+import {BsFilePost} from 'react-icons/bs';
+import {BsPencilSquare} from 'react-icons/bs';
+import { GrLogout } from "react-icons/gr";
 
 export default class Nav extends Component {
+
     render() {
+
         return (
             <div className="Nav">
                 <div className="nav_logo_container">
@@ -12,24 +17,26 @@ export default class Nav extends Component {
 
                     <div className="nav_routes_icons_container">
                         <Link to="/dashboard">
-                            <MDBIcon icon="home" className="white-text" />
+                            <BsFillHouseDoorFill color="white" size="35px" className="nav_item" />
                         </Link>
 
                         <Link to="/posts">
-                            <MDBIcon far icon="comments" className="white-text" />
+                            <BsFilePost color="white" size="35px" className="nav_item" />
                         </Link>
 
                         <Link to="/post">
-                            <MDBIcon far icon="edit" className="white-text" />
+                            <BsPencilSquare color="white" size="35px" className="nav_item" />
                         </Link>
                     </div>
 
                     <div className="nav_profile_image_container">
-
+                        
                     </div>
 
                     <div className="nav_logout_icon_container">
-                        <MDBIcon icon="sign-out-alt" className="white-text" size="2x" />
+                        <Link to ="/">
+                            <GrLogout color="brand" size="35px" className="logout_icon" />
+                        </Link>
                     </div>
             </div>
         )

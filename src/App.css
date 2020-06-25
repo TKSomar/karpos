@@ -188,6 +188,7 @@ body {
   justify-content: center;
   align-items: center;
   left: 20px;
+  width: 20%;
 }
 
 .nav_logo {
@@ -196,15 +197,36 @@ body {
   font-weight: 400;
 }
 
-.nav_routes_icon_container {
+.nav_routes_icons_container {
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  right: 20px;
-  width: 30vw;
+  right: 100px;
+  position: fixed;
+  width: 50%;
+  height: 100px;
 }
 
-.white_icon {
-  color: white;
+.nav_profile_image_container {
+  width: 70px;
+  height: 100px;
+  margin: 0 auto;
+}
+
+.nav_logout_icon_container {
+  width: 60px;
+  height: 100px;
+  right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+/* Icons */
+
+.nav_item {
+  margin: 10px 25px;
 }
