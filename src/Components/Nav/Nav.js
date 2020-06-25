@@ -35,7 +35,7 @@ export default class Nav extends Component {
 
                     <div className="nav_logout_icon_container">
                         <Link to ="/">
-                            <GrLogout color="brand" size="35px" className="logout_icon" />
+                            <GrLogout size="35px" className="logout_icon" stroke="#FFFFF" fill="#FFFFF" />
                         </Link>
                     </div>
             </div>

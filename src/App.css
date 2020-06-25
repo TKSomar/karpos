@@ -230,3 +230,7 @@ body {
 .nav_item {
   margin: 10px 25px;
 }
+
+path {
+  stroke: white;
+}
