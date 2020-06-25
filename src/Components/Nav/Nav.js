@@ -4,8 +4,16 @@ import {BsFillHouseDoorFill} from 'react-icons/bs';
 import {BsFilePost} from 'react-icons/bs';
 import {BsPencilSquare} from 'react-icons/bs';
 import { GrLogout } from "react-icons/gr";
+import Avatar from 'react-avatar';
 
 export default class Nav extends Component {
+    constructor() {
+        super();
+
+        this.state = {
+            user: '',
+        }
+    }
 
     render() {
 
@@ -30,7 +38,9 @@ export default class Nav extends Component {
                     </div>
 
                     <div className="nav_profile_image_container">
-                        
+                        <Link to="/profile">
+                            <Avatar name={this.state.user} size="70" round={true} />
+                        </Link>
                     </div>
 
                     <div className="nav_logout_icon_container">

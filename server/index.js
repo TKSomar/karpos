@@ -29,12 +29,17 @@ app.use(cors(corsOptions));
 
 app.use(express.json());
 
-app.use((req, res, next) => {
-    res.header('Access-Control-Allow-Origin', '*');
-    res.header('Access-Control-Allow-Headers', '*');
-    res.header('Access-Control-Allow-Methods', '*');
-    next();
-});
+// No CORS Headder set
+app.get('/', function(request, response) {
+    response.sendFile(__dirname + '/message.json');
+  });
+
+// CORS header `Access-Control-Allow-Origin` set to accept all
+app.get('/allow-cors', function(request, response) {
+    response.set('Access-Control-Allow-Origin', '*');
+    response.sendFile(__dirname + '/message.json');
+  });
+
 
 app.use(
     session({
@@ -43,10 +48,10 @@ app.use(
         cookie: {maxAge: 1000 * 60 * 60 * 24},
         secret: SESSION_SECRET
     })
-);
+    );
 
 
-//auth endpoints
+    //auth endpoints
 // app.post('/api/auth/login', authCtrl.login);
 // app.post('/api/auth/register', authCtrl.register);
 // app.delete('/api/auth/logout', authCtrl.logout);

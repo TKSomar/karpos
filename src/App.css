@@ -211,7 +211,12 @@ body {
 .nav_profile_image_container {
   width: 70px;
   height: 100px;
-  margin: 0 auto;
+  right: 70px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
 }
 
 .nav_logout_icon_container {
@@ -221,6 +226,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  position: fixed;
 }
 
 
