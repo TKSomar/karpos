@@ -3,7 +3,6 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
-const cors = require('cors');
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
@@ -14,31 +13,13 @@ const commentCtrl = require('./Controllers/commentCtrl');
 
 const app = express();
 
-const whitelist = ['https://www.fruityvice.com/']
-const corsOptions = {
-    origin: function (origin, callback) {
-        if (whitelist.indexOf(origin) !== -1) {
-            callback(null, true)
-        } else {
-            callback(new Error('Not allowed by CORS'))
-        }
-    }
-}
-
-app.use(cors(corsOptions));
-
 app.use(express.json());
 
-// No CORS Headder set
-app.get('/', function(request, response) {
-    response.sendFile(__dirname + '/message.json');
-  });
-
 // CORS header `Access-Control-Allow-Origin` set to accept all
-app.get('/allow-cors', function(request, response) {
-    response.set('Access-Control-Allow-Origin', '*');
-    response.sendFile(__dirname + '/message.json');
-  });
+app.use(function(req, res, next) {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    next();
+  })
 
 
 app.use(

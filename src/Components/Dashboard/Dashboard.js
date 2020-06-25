@@ -52,6 +52,7 @@ class Dash extends Component {
                 <Nav />
 
                 <div className="dash_container">
+                    This is the Dashboard component.
                     {fruits}
                 </div>
 
