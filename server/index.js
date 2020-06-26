@@ -33,9 +33,9 @@ app.use(
 
 
     //auth endpoints
-// app.post('/api/auth/login', authCtrl.login);
-// app.post('/api/auth/register', authCtrl.register);
-// app.delete('/api/auth/logout', authCtrl.logout);
+app.post('/api/auth/login', authCtrl.login);
+app.post('/api/auth/register', authCtrl.register);
+app.delete('/api/auth/logout', authCtrl.logout);
 
 // //post endpoints
 // app.get('/api/posts', postCtrl.getPosts);

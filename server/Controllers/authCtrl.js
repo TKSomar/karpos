@@ -23,10 +23,23 @@ module.exports = {
     },
 
     register: async (req, res) => {
+        const db = req.app.get('db'),
+            {first_name, last_name, email, password} = req.body,
+            existingUser = (await db.check_user(email))[0],
+            salt = bcrypt.genSaltSync(10),
+            hash = bcrypt.hashSync(password, salt)
 
+            if(existingUser) return res.status(409).send('User already exists.')
+
+            const newUser = (await db.register_user(first_name, last_name, email, hash))[0]
+
+            req.session.user = newUser
+            
+            res.status(200).send(req.session.user)
     },
 
     logout: (req, res) => {
-        
+        req.session.destroy()
+        res.sendStatus(200)
     }
 }

@@ -1,2 +1,3 @@
-INSERT INTO users (full_name, email, password, created_at, country_code)
-VALUES ($1, $2, $3, DATE, $4);
+INSERT INTO users (first_name, last_name, email, password)
+VALUES ($1, $2, $3, $4)
+RETURNING id, first_name;

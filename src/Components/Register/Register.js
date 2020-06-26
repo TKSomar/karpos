@@ -1,14 +1,36 @@
 import React, {Component} from 'react';
 import axios from 'axios';
+import {connect} from 'react-redux';
+import {getUser} from '../../redux/reducer';
 
 class Register extends Component {
     constructor(){
         super();
 
         this.state = {
-
+            first_name: '',
+            last_name: '',
+            email: '',
+            password: ''
         }
     }
+
+    handleChange = e => {
+        this.setState({ [e.target.name]: e.target.value })
+      }
+
+    register = () => {
+        const {first_name, last_name, email, password} = this.state;
+        axios.post('api/auth/register', {first_name, last_name, email, password})
+        .then(res => {
+            const {id, first_name, profile_pic} = res.data
+            this.setState({first_name: '', last_name: '', email: '', password: ''})
+            this.props.getUser(id, first_name, profile_pic)
+            this.props.history.push('/dashboard')
+        })
+        .catch(err => alert(err.response.request.response))
+    }
+
 
     render() {
         return (
@@ -23,26 +45,26 @@ class Register extends Component {
 
                     <div className="register_input_box">
                         <p>First name</p>
-                        <input type="text" id="first_name"></input>
+                        <input type="text" id="first_name" name="first_name" onChange={this.handleChange}></input>
                     </div>
 
                     <div className="register_input_box">
                         <p>Last name</p>
-                        <input type="text" id="last_name"></input>
+                        <input type="text" id="last_name" name="last_name" onChange={this.handleChange}></input>
                     </div>
 
                     <div className="register_input_box">
                         <p>Email</p>
-                        <input type="text" id="email"></input>
+                        <input type="text" id="email" name="email" onChange={this.handleChange}></input>
                     </div>
 
                     <div className="register_input_box">
                         <p>Password</p>
-                        <input type="text" id="password"></input>
+                        <input type="password" id="password" name="password" onChange={this.handleChange}></input>
                     </div>
 
                     <div className="register_button_container">
-                        <button className="register_btn">Create account</button>
+                        <button className="register_btn" onClick={this.register}>Create account</button>
                     </div>
 
                 </div>
@@ -51,4 +73,6 @@ class Register extends Component {
     }
 }
 
-export default Register;
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, {getUser})(Register);
