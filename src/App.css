@@ -246,11 +246,12 @@ path {
 .dash_container {
   width: 100%;
   height: 100%;
+  top: 130px;
   display: flex;
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  position: fixed;
+  position: relative;
 }
 
 .dashboard_fruit_box {
@@ -260,4 +261,43 @@ path {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+/* Posts */
+
+.posts_container {
+  width: 100%;
+  height: 100%;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Post */
+
+.post_container {
+  width: 100%;
+  height: 100%;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+/* Profile */
+
+.profile_container {
+  width: 100%;
+  height: 100%;
+  top: 130px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }

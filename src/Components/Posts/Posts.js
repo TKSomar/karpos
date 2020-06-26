@@ -21,7 +21,7 @@ class Posts extends Component {
           <Nav />
 
           <div className="posts_container">
-            This is the Posts Component.
+            This is the Posts component.
           </div>
 
         </div>

@@ -1,6 +1,7 @@
 import React from 'react';
 import routes from './routes';
 import {connect} from 'react-redux';
+import {withRouter} from 'react-router-dom';
 import './App.css';
 
 function App() {
@@ -13,4 +14,4 @@ function App() {
 
 const mapStateToProps = reduxState => reduxState
 
-export default connect(mapStateToProps)(App);
+export default withRouter(connect(mapStateToProps,)(App));
