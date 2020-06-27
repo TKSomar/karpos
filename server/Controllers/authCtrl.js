@@ -2,24 +2,22 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
     login: async (req, res) => {
-        const db = req.app.get('db');
-        const {email, password} = req.body;
+        const db = req.app.get('db'),
+            {email, password} = req.body,
+            existingUser = (await db.check_user(email))[0]
 
-        const user = await db.check_user(email)
-        if (!user[0]){
-            return res.status(404).send('User does not exist')
-        } else {
-            const authenticated = bcrypt.compareSync(password, user[0].password)
-            if (authenticated) {
-                req.session.user = {
-                    userId: user[0].id,
-                    username: user[0].email
-                }
-                res.status(200).send(req.session.user)
-            } else {
-                res.status(403).send('Username or password incorrect')
-            }
-        }
+        if(!existingUser) return res.status(404).send('User does not exist.')
+
+        const authenticated = bcrypt.compareSync(password, existingUser.password)
+
+        if(!authenticated)
+            return res.status(403).send('Email or password is incorrect.')
+
+            delete existingUser.password
+
+            req.session.user = existingUser
+
+            res.status(200).send(req.session.user)
     },
 
     register: async (req, res) => {
@@ -41,5 +39,13 @@ module.exports = {
     logout: (req, res) => {
         req.session.destroy()
         res.sendStatus(200)
-    }
+    },
+
+    getUser: (req, res) => {
+        if(req.session.user) {
+            res.status(200).send(req.session.user)
+        } else {
+            res.sendStatus(404)
+        }
+    },
 }

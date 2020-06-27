@@ -8,7 +8,6 @@ class Dash extends Component {
         super(props);
 
         this.state = {
-            user: '',
             fruits: [],
             search: '',
             loading: true

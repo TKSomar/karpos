@@ -6,7 +6,12 @@ import {BsPencilSquare} from 'react-icons/bs';
 import { GrLogout } from "react-icons/gr";
 import Avatar from 'react-avatar';
 
-export default class Nav extends Component {
+import axios from 'axios';
+import {connect} from 'react-redux';
+import {storeUser} from '../../redux/reducer';
+import {withRouter} from 'react-router';
+
+class Nav extends Component {
     constructor() {
         super();
 
@@ -15,8 +20,26 @@ export default class Nav extends Component {
         }
     }
 
-    render() {
+    logout = () => {
+        axios.post('/api/auth/logout')
+        .then(() => {
+            this.props.history.push('/')
+        })
+    }
 
+    componentDidMount() {
+        axios
+        .get('/api/auth/user')
+        .then(res => {
+            const {id, first_name, last_name} = res.data
+            this.props.storeUser(id, first_name, last_name)
+        })
+        .catch(() => {
+            this.props.history.push('/')
+        })
+    }
+
+    render(req) {
         return (
             <div className="Nav">
                 <div className="nav_logo_container">
@@ -44,11 +67,16 @@ export default class Nav extends Component {
                     </div>
 
                     <div className="nav_logout_icon_container">
-                        <Link to ="/">
-                            <GrLogout size="35px" className="logout_icon" />
+                        <Link onClick={this.logout}>
+                            <GrLogout size="35px" className="logout_icon" id="logout_icon" />
                         </Link>
                     </div>
             </div>
         )
     }
 }
+
+
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, { storeUser })(withRouter(Nav))

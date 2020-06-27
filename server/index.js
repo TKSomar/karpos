@@ -8,8 +8,8 @@ const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
 const authCtrl = require('./Controllers/authCtrl');
 const postCtrl = require('./Controllers/postCtrl');
-const fruitCtrl = require('./Controllers/postCtrl');
-const commentCtrl = require('./Controllers/commentCtrl');
+// const fruitCtrl = require('./Controllers/postCtrl');
+// const commentCtrl = require('./Controllers/commentCtrl');
 
 const app = express();
 
@@ -35,14 +35,15 @@ app.use(
     //auth endpoints
 app.post('/api/auth/login', authCtrl.login);
 app.post('/api/auth/register', authCtrl.register);
-app.delete('/api/auth/logout', authCtrl.logout);
+app.post('/api/auth/logout', authCtrl.logout);
+app.get('/api/auth/user', authCtrl.getUser);
 
 // //post endpoints
-// app.get('/api/posts', postCtrl.getPosts);
-// app.get('/api/posts/:user_id', postCtrl.getUsersPosts);
-// app.post('/api/posts', postCtrl.newPost);
-// app.put('/api/posts/:post_id', postCtrl.editPost);
-// app.delete('/api/posts/:post_id', postCtrl.deletePost);
+app.get('/api/posts', postCtrl.getPosts);
+app.get('/api/posts/:post_id', postCtrl.getPost);
+app.post('/api/posts', postCtrl.createPost);
+app.put('/api/posts/:post_id', postCtrl.editPost);
+app.delete('/api/posts/:post_id', postCtrl.deletePost);
 
 // //comment endpoints
 // app.get('/api/comments', commentCtrl.getComments);

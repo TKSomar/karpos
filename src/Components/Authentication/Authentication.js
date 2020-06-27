@@ -2,13 +2,14 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import axios from 'axios';
 import {Link} from 'react-router-dom';
+import {storeUser} from '../../redux/reducer';
 
 class Auth extends Component {
     constructor(props) {
         super(props);
 
         this.state = {
-            username: '',
+            email: '',
             password: ''
         }
 
@@ -16,7 +17,7 @@ class Auth extends Component {
     }
 
     handleChange(prop, val) {
-        if (val.length < 10) {
+        if (val.length < 50) {
             this.setState({
                 [prop]: val
             })
@@ -27,10 +28,12 @@ class Auth extends Component {
         const {email, password} = this.state;
         axios.post('/api/auth/login', {email, password})
         .then(res => {
-            this.props.loginUser(res.data);
-            this.props.updateUser(res.data);
-            this.props.history.push('/dashbaord');
+            const {id, first_name, last_name} = res.data
+            this.setState({email: '', password: ''})
+            this.props.storeUser(id, first_name, last_name);
+            this.props.history.push('/dashboard');
         })
+        .catch(err => alert(err.response.request.response))
     }
 
     render() {
@@ -49,13 +52,13 @@ class Auth extends Component {
                     <div className="auth_input_box">
 
                         <p className="auth_input_title">Username</p>
-                        <input value={this.state.username} onChange={e => this.handleChange('username', e.target.value)} />
+                        <input value={this.state.email} onChange={e => this.handleChange('email', e.target.value)} type="email" />
                         </div>
 
                     <div className="auth_input_box">
 
                         <p className="auth_input_title">Password</p>
-                        <input value={this.state.password} onChange={e => this.handleChange('username', e.target.value)} />
+                        <input value={this.state.password} onChange={e => this.handleChange('password', e.target.value)} type="password" />
 
                     </div>
 
@@ -69,4 +72,6 @@ class Auth extends Component {
     }
 }
 
-export default connect(null, {})(Auth);
+const mapStateToProps = state => state
+
+export default connect(mapStateToProps, {storeUser})(Auth)

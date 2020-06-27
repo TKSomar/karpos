@@ -278,15 +278,23 @@ path {
 
 /* Post */
 
+.Post {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
 .post_container {
-  width: 100%;
-  height: 100%;
+  width: 85%;
+  height: 85%;
   top: 130px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   position: relative;
+  border: 1px solid green;
 }
 
 /* Profile */
