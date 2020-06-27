@@ -12,8 +12,8 @@ import {storeUser} from '../../redux/reducer';
 import {withRouter} from 'react-router';
 
 class Nav extends Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
 
         this.state = {
             user: '',
@@ -32,6 +32,7 @@ class Nav extends Component {
         .get('/api/auth/user')
         .then(res => {
             const {id, first_name, last_name} = res.data
+            this.setState({user: first_name})
             this.props.storeUser(id, first_name, last_name)
         })
         .catch(() => {
@@ -39,7 +40,7 @@ class Nav extends Component {
         })
     }
 
-    render(req) {
+    render() {
         return (
             <div className="Nav">
                 <div className="nav_logo_container">
@@ -67,7 +68,7 @@ class Nav extends Component {
                     </div>
 
                     <div className="nav_logout_icon_container">
-                        <Link onClick={this.logout}>
+                        <Link onClick={this.logout} to="/">
                             <GrLogout size="35px" className="logout_icon" id="logout_icon" />
                         </Link>
                     </div>

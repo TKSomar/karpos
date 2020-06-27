@@ -40,10 +40,10 @@ app.get('/api/auth/user', authCtrl.getUser);
 
 // //post endpoints
 app.get('/api/posts', postCtrl.getPosts);
-app.get('/api/posts/:post_id', postCtrl.getPost);
-app.post('/api/posts', postCtrl.createPost);
-app.put('/api/posts/:post_id', postCtrl.editPost);
-app.delete('/api/posts/:post_id', postCtrl.deletePost);
+app.get('/api/post/:post_id', postCtrl.getPost);
+app.post('/api/post', postCtrl.createPost);
+app.put('/api/post/:post_id', postCtrl.editPost);
+app.delete('/api/post/:post_id', postCtrl.deletePost);
 
 // //comment endpoints
 // app.get('/api/comments', commentCtrl.getComments);

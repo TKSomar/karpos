@@ -96,6 +96,7 @@ body {
 }
 
 .auth_register_link {
+  padding: 5px 5px 5px 5px;
   margin: 10px 0;
   font-size: 13px;
 }
@@ -181,6 +182,7 @@ body {
   background-color: #C4C4C4;
   display: flex;
   flex-direction: row;
+  z-index: 100;
 }
 
 .nav_logo_container {
@@ -283,6 +285,7 @@ path {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 100%;
 }
 
 .post_container {
@@ -294,7 +297,53 @@ path {
   justify-content: center;
   align-items: center;
   position: relative;
-  border: 1px solid green;
+}
+
+.create_post {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #2C0073;
+  margin: 10px 0;
+  border-radius: 3px;
+}
+
+.create_post>p {
+  color: white;
+  margin: 10px 0;
+}
+
+.create_post>input {
+  border-radius: 3px;
+  width: 85%;
+  margin: 5px 0;
+}
+
+.create_post>textarea {
+  width: 85%;
+  height: 45vh;
+  margin: 10px 0;
+}
+
+.create_post>h2 {
+  font-size: 34px;
+}
+
+.form_submit_container {
+  display: flex;
+}
+
+#post_submit {
+  color: white;
+  background-color: #0E4AE2;
+  font-size: 25px;
+  border: none;
+  width: 100%;
+  border-radius: 5px;
+  margin: 20px 0;
+  line-height: 2rem;
 }
 
 /* Profile */
