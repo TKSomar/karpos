@@ -5,6 +5,7 @@ import {BsFilePost} from 'react-icons/bs';
 import {BsPencilSquare} from 'react-icons/bs';
 import { GrLogout } from "react-icons/gr";
 import Avatar from 'react-avatar';
+import blank_transparent from '../../assets/blank_transparent.png';
 
 import axios from 'axios';
 import {connect} from 'react-redux';

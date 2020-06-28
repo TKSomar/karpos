@@ -179,7 +179,7 @@ body {
   position: fixed;
   top: 0;
   padding-left: 20px;
-  background-color: #C4C4C4;
+  background-color: #0E4AE2;
   display: flex;
   flex-direction: row;
   z-index: 100;
@@ -195,7 +195,7 @@ body {
 
 .nav_logo {
   font-size: 35px;
-  color: #2C0073;
+  color: #ffffff;
   font-weight: 400;
 }
 
@@ -290,7 +290,7 @@ path {
 
 .post_container {
   width: 85%;
-  height: 85%;
+  height: 600px;
   top: 130px;
   display: flex;
   flex-direction: column;
@@ -302,48 +302,110 @@ path {
 .create_post {
   display: flex;
   width: 100%;
+  height: 575px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   background-color: #2C0073;
   margin: 10px 0;
-  border-radius: 3px;
+  border-radius: 5px;
+  padding: 5px 5px 5px 5px;
 }
 
-.create_post>p {
+.inputs_container {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 80%;
+}
+
+.inputs_container p {
   color: white;
-  margin: 10px 0;
+  margin: 10px 5px;
+  font-size: 18px;
 }
 
-.create_post>input {
+.create_post input::placeholder {
+  color: rgb(39, 39, 39);
+}
+
+.create_post input {
   border-radius: 3px;
-  width: 85%;
-  margin: 5px 0;
+  width: 100%;
+  margin: 5px 5px;
+  background-color: rgba(255, 255, 255, 0.781);
+  border: none;
+  padding: 5px 5px;
 }
 
-.create_post>textarea {
-  width: 85%;
-  height: 45vh;
-  margin: 10px 0;
+.create_post textarea::placeholder {
+  color: rgb(39, 39, 39);
 }
 
-.create_post>h2 {
-  font-size: 34px;
+.create_post textarea {
+  width: 100%;
+  height: 100%;
+  margin: 10px 5px;
+  border: none;
+  border-radius: 5px;
+  background-color: rgba(255, 255, 255, 0.89);
+  padding: 3px 3px 3px 3px;
+  line-height: 21px;
+  outline: none;
+  user-select: text;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+}
+
+.post_container h1 {
+  font-size: 36px;
+  font-weight: 400;
+}
+
+.title_content_container {
+  display: flex;
+  flex-direction: column;
+  width: 65%;
+  height: 100%;
+  margin: 5px 15px;
+}
+
+.post_image_container {
+  display: flex;
+  flex-direction: column;
+  width: 35%;
+  height: 100%;
+  margin: 5px 15px;
+}
+
+.post_image_container img {
+  margin: 10px 5px;
+  border-radius: 5px;
 }
 
 .form_submit_container {
   display: flex;
+  width: 100%;
+  justify-content: center;
+  align-items: center;
 }
 
 #post_submit {
-  color: white;
+  color: rgb(219, 204, 204);
   background-color: #0E4AE2;
-  font-size: 25px;
+  font-size: 18px;
   border: none;
-  width: 100%;
+  width: 150px;
   border-radius: 5px;
-  margin: 20px 0;
+  margin: 20px 5px;
   line-height: 2rem;
+  padding: 5px 5px 5px 5px;
+}
+
+#post_submit:hover {
+  background-color: #3d6bdd;
 }
 
 /* Profile */

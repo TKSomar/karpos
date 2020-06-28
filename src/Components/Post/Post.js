@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
+import image_placeholder from '../../assets/image_placeholder.jpg';
 
 class Post extends Component {
     constructor(props) {
@@ -9,7 +10,7 @@ class Post extends Component {
         this.state = {
             title: '',
             content: '',
-            img: '',
+            img: image_placeholder,
         }
     }
 
@@ -33,6 +34,12 @@ class Post extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
+    resetImg = () => {
+        if(this.state({img: ''})) {
+            this.setState({img: image_placeholder})
+        }
+    }
+
     render() {
         const {title, content, img} = this.state
         return (
@@ -47,24 +54,33 @@ class Post extends Component {
 
                         <form className="create_post" onSubmit={this.submit} >
 
+                            <div className="inputs_container" >
+
+                                <div className="title_content_container" >
+
+                                    <input type="text" name="title" value={title} id="post_title" maxLength="50" onChange={this.handleChange} placeholder="Title" ></input>
+
+                                    <textarea type="textarea" value={content} name="content" id="post_content" onChange={this.handleChange} placeholder="Text/Content"></textarea>
+
+                                </div>
+
+                                <div className="post_image_container" >
+
+                                    <input type="url" name="img" id="post_image" placeholder="Image URL" onChange={this.handleChange} ></input>
+
+                                    <img src={this.state.img} className="new_post_image" height="85%" width="100%" alt="karpos new post" />
+
+                                </div>
+
+                            </div>
+
                             
-
-                            <p>Title</p>
-
-                            <input type="text" name="title" value={title} id="post_title" maxLength="50" onChange={this.handleChange} ></input>
-
-                            <p>Content</p>
-
-                            <textarea type="textarea" value={content} name="content" id="post_content" onChange={this.handleChange}></textarea>
-
-                            <p>Image URL</p>
-
-                            <input type="url" value={img} name="img" id="post_image" onChange={this.handleChange} ></input>
 
                             <div className="form_submit_container">
                                 
-                                <input type="submit" value="Submit" id="post_submit" ></input>
+                                <input type="submit" value="SUBMIT" id="post_submit" ></input>
                             </div>
+
                         </form>
                     </div>
 
