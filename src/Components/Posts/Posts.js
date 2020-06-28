@@ -6,22 +6,39 @@ class Posts extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        author: '',
-        author_pic: '',
-        img: '',
-        content: '',
-        loading: true
+        posts: []
       }
+    }
+
+    componentDidMount() {
+      let url = 'http://localhost:4572/api/posts';
+
+      axios.get(url)
+      .then(res => {
+        this.setState({posts: res.data});
+      })
+      .catch(err => console.log(err));
     }
     
     render() {
+      let posts = this.state.posts.map((elem) => {
+        return (
+          <div className="post_list_item" key={elem.id}>
+            <h2>{elem.title}</h2>
+            <img src={elem.img} height="150px" width="200px" alt="karpos post" />
+            <div className="post_content_container">
+              <p>{elem.content}</p>
+            </div>
+          </div>
+        )
+      })
       return (
         <div className='Posts'>
 
           <Nav />
 
           <div className="posts_container">
-            This is the Posts component.
+            {posts}
           </div>
 
         </div>

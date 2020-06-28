@@ -8,7 +8,7 @@ const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
 const authCtrl = require('./Controllers/authCtrl');
 const postCtrl = require('./Controllers/postCtrl');
-// const fruitCtrl = require('./Controllers/postCtrl');
+const fruitCtrl = require('./Controllers/fruitCtrl');
 // const commentCtrl = require('./Controllers/commentCtrl');
 
 const app = express();
@@ -52,7 +52,7 @@ app.delete('/api/post/:post_id', postCtrl.deletePost);
 // app.delete('/api/comments/:comment_id', commentCtrl.deleteComment);
 
 // //fruit endpoints
-// app.get('/api/fruits', fruitCtrl.getFruits);
+app.get('/api/fruits', fruitCtrl.getFruits);
 // app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
 // app.get('/api/saved_fruits/:user_id', fruitCtrl.getSavedFruits);
 // app.get('/api/wishlist/:user_id', fruitCtrl.getWishlist);

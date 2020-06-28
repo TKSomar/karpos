@@ -15,7 +15,7 @@ class Dash extends Component {
     }
 
     componentDidMount() {
-        let url = 'https://www.fruityvice.com/api/fruit/all';
+        let url = 'http://localhost:4572/api/fruits';
 
         axios.get(url)
         .then(res => {
@@ -26,24 +26,26 @@ class Dash extends Component {
     }
 
     reset() {
-        let url = 'https://www.fruityvice.com/api/fruit/all';
+        let url = 'http://localhost:4572/api/fruits';
 
         axios.get(url)
         .then(res => {
-            this.setState({posts: res.data, loading:false, search: ''})
+            this.setState({fruits: res.data, loading:false, search: ''})
         })
     }
 
     render() {
         let fruits = this.state.fruits.map((elem) => {
-            return <Link to={`/fruit/${elem.id}`} key={elem.id}>
-                <div className="content_box dashboard_fruit_box">
+            return (
+                <div className="fruit_list_item" key={elem.id}>
                     <h2>{elem.name}</h2>
+                    <img src={elem.img} width="75px" height="75px" alt="fruit" />
                     <div className="fruit_box">
-                    <p>{elem.family}</p>
+                    <p>{elem.type}</p>
+                    <p>{elem.description}</p>
                     </div>
                 </div>
-            </Link>
+            )
         })
 
         return (
@@ -51,7 +53,6 @@ class Dash extends Component {
                 <Nav />
 
                 <div className="dash_container">
-                    This is the Dashboard component.
                     {fruits}
                 </div>
 
