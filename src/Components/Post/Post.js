@@ -79,6 +79,7 @@ class Post extends Component {
                             <div className="form_submit_container">
                                 
                                 <input type="submit" value="SUBMIT" id="post_submit" ></input>
+                                
                             </div>
 
                         </form>

@@ -6,6 +6,7 @@
 .App {
   box-sizing: border-box;
   margin: 0;
+  background-color: #ffffff;
 }
 
 body {
@@ -150,8 +151,8 @@ body {
 }
 
 .register_logo {
-  font-size: 45px;
-  color: #2C0073;
+  font-size: 55px;
+  color: #0E4AE2;
   font-weight: 400;
 }
 
@@ -169,6 +170,10 @@ body {
   font-size: 25px;
   border: none;
   width: 80%;
+}
+
+.register_btn:hover {
+  background-color: #3d6bdd;
 }
 
 /* Nav */
@@ -289,7 +294,7 @@ path {
 }
 
 .post_container {
-  width: 85%;
+  width: 95%;
   height: 600px;
   top: 130px;
   display: flex;
@@ -302,11 +307,11 @@ path {
 .create_post {
   display: flex;
   width: 100%;
-  height: 575px;
+  height: 100%;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  background-color: #2C0073;
+  background-color: #292828;
   margin: 10px 0;
   border-radius: 5px;
   padding: 5px 5px 5px 5px;
