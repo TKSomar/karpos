@@ -17,9 +17,9 @@ module.exports = {
 
     createPost: async (req, res) => {
         const db = req.app.get('db'),
-        {id} = req.session.user,
+        {id, first_name, last_name} = req.session.user,
         {title, content, img} = req.body,
-        post = (await db.create_post(id, title, content, img))[0]
+        post = (await db.create_post(id, first_name, last_name, title, content, img))[0]
 
         if(post) res.sendStatus(200)
     },

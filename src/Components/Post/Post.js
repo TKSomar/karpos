@@ -8,17 +8,30 @@ class Post extends Component {
         super(props);
 
         this.state = {
+            author_first: '',
+            author_last: '',
+            author_id: '',
             title: '',
             content: '',
             img: image_placeholder,
         }
     }
 
+    componentDidMount() {
+        axios
+        .get('/api/auth/user')
+        .then(res => {
+            const {id, first_name, last_name} = res.data
+            this.setState({author_first: first_name, author_last: last_name, author_id: id})
+        })
+        .catch(err => console.log(err))
+    }
+
     submit = e => {
         e.preventDefault()
-        const {title, content, img} = this.state
+        const {author_id, author_first, author_last, title, content, img} = this.state
 
-        axios.post('/api/post', {title, content, img})
+        axios.post('/api/post', {author_id, author_first, author_last, title, content, img})
         .then(() => {
             this.setState({title: '', content: '', img: ''})
             alert('Post successfully created!')
