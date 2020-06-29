@@ -38,12 +38,24 @@ class Dash extends Component {
         let fruits = this.state.fruits.map((elem) => {
             return (
                 <div className="fruit_list_item" key={elem.id}>
-                    <h2>{elem.name}</h2>
-                    <img src={elem.img} width="75px" height="75px" alt="fruit" />
-                    <div className="fruit_box">
-                    <p>{elem.type}</p>
-                    <p>{elem.description}</p>
+
+                    <div className="fruit_list_item_title_img_cont" >
+
+                        <h2 className="fruit_list_item_title">{elem.name}</h2>
+
+                        <img src={elem.img} width="75px" height="75px" alt="fruit" />
+
                     </div>
+
+                    
+                    <div className="fruit_box_content">
+
+                        <strong>Type</strong><p>{elem.type}</p>
+
+                        <strong>Description</strong><p>{elem.description}</p>
+
+                    </div>
+
                 </div>
             )
         })

@@ -270,6 +270,37 @@ path {
   align-items: center;
 }
 
+.fruit_list_item {
+  width: 85%;
+  height: 150px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  margin: 5px 0;
+  border-radius: 5px;
+  border: 1px solid grey;
+}
+
+.fruit_list_item_title_img_cont {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 2px;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+
+.fruit_list_item_title {
+  margin: 5px 0;
+}
+
+.fruit_box_content {
+  margin: 2px 4px;
+  width: 75%;
+}
+
 /* Posts */
 
 .posts_container {
@@ -295,6 +326,7 @@ path {
   flex-grow: 1;
   border: 1px solid grey;
   border-radius: 5px;
+  margin: 5px 0;
 }
 
 .post_content_container {
