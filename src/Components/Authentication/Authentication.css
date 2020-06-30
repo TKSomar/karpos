@@ -1,0 +1,86 @@
+.Auth {
+    background-image: url('assets/login_bg_large.jpeg');
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  
+  .logo_container {
+    width: 35vw;
+    height: 20vh;
+    position: relative;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .auth_container {
+    width: 30vw;
+    height: 35vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: rgba(216, 206, 206, 0.658);
+  }
+  
+  .auth_logo {
+    font-size: 65px;
+    color: #0E4AE2;
+    font-weight: 400;
+  }
+  
+  .auth_input_box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    font-size: 26px;
+  }
+  
+  .auth_input_box input {
+    border-radius: 5px;
+    border: 1px solid white;
+    width: 55%;
+  }
+  
+  .auth_input_title {
+    margin: 4px 0;
+  }
+  
+  .auth_button_container {
+    display: flex;
+    justify-content: space-around;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    margin: 15px 0;
+  }
+  
+  .auth_button {
+    font-size: 24px;
+    width: 55%;
+    background-color: #0E4AE2;
+    border-radius: 5px;
+    border: none;
+    color: white;
+  }
+  
+  .auth_register_link {
+    padding: 5px 5px 5px 5px;
+    margin: 10px 0;
+    font-size: 13px;
+  }

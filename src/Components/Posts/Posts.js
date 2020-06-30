@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
 import Avatar from 'react-avatar';
+import './Posts.css';
 
 class Posts extends Component {
     constructor(props) {

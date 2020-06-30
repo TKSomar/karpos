@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
 import image_placeholder from '../../assets/image_placeholder.jpg';
+import './Post.css';
 
 class Post extends Component {
     constructor(props) {

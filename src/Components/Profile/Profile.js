@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import axios from 'axios';
 import Nav from '../Nav/Nav';
+import './Profile.css';
 
 class Profile extends Component {
     constructor() {
