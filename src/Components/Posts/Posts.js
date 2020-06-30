@@ -12,7 +12,7 @@ class Posts extends Component {
     }
 
     componentDidMount() {
-      let url = 'http://165.227.108.223:4572/api/posts';
+      let url = '/api/posts';
 
       axios.get(url)
       .then(res => {
