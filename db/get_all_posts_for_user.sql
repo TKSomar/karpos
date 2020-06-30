@@ -1,3 +1,3 @@
 SELECT * FROM posts
 ORDER BY
-posts.id ASC;
+posts.id DESC;

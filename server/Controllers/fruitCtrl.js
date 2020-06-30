@@ -14,8 +14,11 @@ module.exports = {
 
     },
 
-    saveFruit: async (req, res) => {
+    bookmarkFruit: async (req, res) => {
+        const db = req.app.get('db'),
+        bookmark =  await db.bookmark_fruit()
 
+        res.status(200).send(bookmark)
     },
 
     getWishlist: async (req, res) => {

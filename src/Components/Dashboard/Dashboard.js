@@ -8,8 +8,10 @@ class Dash extends Component {
         super(props);
 
         this.state = {
+            user_id: '',
             fruits: [],
             search: '',
+            bookmarked: false,
             loading: true
         }
     }
@@ -23,6 +25,13 @@ class Dash extends Component {
             console.log(this.state.fruits);
         })
         .catch(err => console.log(err));
+
+        axios.get('/api/auth/user')
+        .then(res => {
+            const {id} = res.data;
+            this.setState({user_id: id});
+        })
+        .catch(err => console.log(err));
     }
 
     reset() {
@@ -32,6 +41,10 @@ class Dash extends Component {
         .then(res => {
             this.setState({fruits: res.data, loading:false, search: ''})
         })
+    }
+
+    bookmark = async () => {
+
     }
 
     render() {
@@ -54,6 +67,10 @@ class Dash extends Component {
 
                         <strong>Description</strong><p>{elem.description}</p>
 
+                    </div>
+
+                    <div className="fruit_list_btn_cont">
+                        <button onClick={this.bookmark}>Bookmark</button>
                     </div>
 
                 </div>

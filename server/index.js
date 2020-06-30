@@ -31,6 +31,9 @@ app.use(
     })
     );
 
+app.use(express.static(`${__dirname}/../build`));
+
+
 
     //auth endpoints
 app.post('/api/auth/login', authCtrl.login);
@@ -54,8 +57,8 @@ app.delete('/api/post/:post_id', postCtrl.deletePost);
 // //fruit endpoints
 app.get('/api/fruits', fruitCtrl.getFruits);
 // app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
+app.post('/api/bookmarked', fruitCtrl.bookmarkFruit);
 // app.get('/api/saved_fruits/:user_id', fruitCtrl.getSavedFruits);
-// app.get('/api/wishlist/:user_id', fruitCtrl.getWishlist);
 // app.put('/api/saved_fruits', fruitCtrl.saveFruit);
 // app.put('/api/wishlist', fruitCtrl.savedToWishlist);
 
