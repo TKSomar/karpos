@@ -17,7 +17,7 @@ class Dash extends Component {
     }
 
     componentDidMount() {
-        let url = 'http://165.227.108.223/api/fruits';
+        let url = 'http://165.227.108.223:4572/api/fruits';
 
         axios.get(url)
         .then(res => {
@@ -35,7 +35,7 @@ class Dash extends Component {
     }
 
     reset() {
-        let url = 'http://165.227.108.223/api/fruits';
+        let url = 'http://165.227.108.223:4572/api/fruits';
 
         axios.get(url)
         .then(res => {
