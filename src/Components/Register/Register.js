@@ -21,7 +21,7 @@ class Register extends Component {
 
     register = () => {
         const {first_name, last_name, email, password} = this.state;
-        axios.post('api/auth/register', {first_name, last_name, email, password})
+        axios.post('/api/auth/register', {first_name, last_name, email, password})
         .then(res => {
             const {id, first_name, profile_pic} = res.data
             this.setState({first_name: '', last_name: '', email: '', password: ''})
