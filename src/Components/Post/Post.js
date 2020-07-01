@@ -3,6 +3,7 @@ import axios from 'axios';
 import Nav from '../Nav/Nav';
 import image_placeholder from '../../assets/image_placeholder.jpg';
 import './Post.css';
+import {NotificationContainer, NotificationManager} from 'react-notifications';
 
 class Post extends Component {
     constructor(props) {
@@ -35,7 +36,7 @@ class Post extends Component {
         axios.post('/api/post', {author_id, author_first, author_last, title, content, img})
         .then(() => {
             this.setState({title: '', content: '', img: ''})
-            alert('Post successfully created!')
+            NotificationManager.success('Post has been successfully created!', 'Success!')
             this.props.history.push('/posts')
         })
         .catch(err => {
@@ -64,7 +65,7 @@ class Post extends Component {
 
                     <div className="post_container">
 
-                                            <h1>New post</h1>
+                                            <h1 className="page_title">NEW POST</h1>
 
                         <form className="create_post" onSubmit={this.submit} >
 
@@ -82,7 +83,7 @@ class Post extends Component {
 
                                     <input type="url" name="img" id="post_image" placeholder="Image URL" onChange={this.handleChange} ></input>
 
-                                    <img src={this.state.img} className="new_post_image" height="85%" width="100%" alt="karpos new post" />
+                                    <img src={this.state.img} className="new_post_image" height="87%" width="100%" alt="karpos new post" />
 
                                 </div>
 
@@ -98,7 +99,7 @@ class Post extends Component {
 
                         </form>
                     </div>
-
+                <NotificationContainer/>
             </div>
         )
     }

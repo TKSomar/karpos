@@ -3,6 +3,8 @@ import axios from 'axios';
 import {Link} from 'react-router-dom';
 import Nav from '../Nav/Nav';
 import './Dashboard.css';
+import Bookmark from '../Bookmark/Bookmark';
+
 
 class Dash extends Component {
     constructor(props) {
@@ -12,7 +14,6 @@ class Dash extends Component {
             user_id: '',
             fruits: [],
             search: '',
-            bookmarked: false,
             loading: true
         }
     }
@@ -44,10 +45,6 @@ class Dash extends Component {
         })
     }
 
-    bookmark = async () => {
-
-    }
-
     render() {
         let fruits = this.state.fruits.map((elem) => {
             return (
@@ -57,7 +54,7 @@ class Dash extends Component {
 
                         <h2 className="fruit_list_item_title">{elem.name}</h2>
 
-                        <img src={elem.img} width="75px" height="75px" alt="fruit" />
+                        <img src={elem.img} width="95px" height="85px" alt="fruit" />
 
                     </div>
 
@@ -70,9 +67,7 @@ class Dash extends Component {
 
                     </div>
 
-                    <div className="fruit_list_btn_cont">
-                        <button onClick={this.bookmark}>Bookmark</button>
-                    </div>
+                    <Bookmark fruitId={elem.id} fruitName={elem.name} fruitType={elem.type} fruitDescription={elem.description} fruitImg={elem.img} />
 
                 </div>
             )

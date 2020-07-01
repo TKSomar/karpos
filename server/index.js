@@ -58,9 +58,7 @@ app.delete('/api/post/:post_id', postCtrl.deletePost);
 app.get('/api/fruits', fruitCtrl.getFruits);
 // app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
 app.post('/api/bookmarked', fruitCtrl.bookmarkFruit);
-// app.get('/api/saved_fruits/:user_id', fruitCtrl.getSavedFruits);
-// app.put('/api/saved_fruits', fruitCtrl.saveFruit);
-// app.put('/api/wishlist', fruitCtrl.savedToWishlist);
+app.delete('/api/bookmarked/:fruit_id', fruitCtrl.unBookmarkFruit)
 
 massive({
     connectionString: CONNECTION_STRING,

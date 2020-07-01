@@ -16,16 +16,17 @@ module.exports = {
 
     bookmarkFruit: async (req, res) => {
         const db = req.app.get('db'),
-        bookmark =  await db.bookmark_fruit()
+        {id} = req.session.user,
+        {fruit_id, fruit_name, fruit_type, fruit_description, fruit_img} = req.body,
+        bookmark =  (await db.bookmark_fruit(fruit_id, id, fruit_name, fruit_type, fruit_description, fruit_img))[0]
 
-        res.status(200).send(bookmark)
+        if(bookmark) res.sendStatus(200)
     },
 
-    getWishlist: async (req, res) => {
+    unBookmarkFruit: async (req, res) => {
+        const db = req.app.get('db'),
+        unBookmark = await db.unbookmark_fruit()
 
-    },
-
-    savedToWishlist: async (req, res) => {
-        
+        res.status(200).send(unBookmark)
     }
 }

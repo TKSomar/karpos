@@ -7,14 +7,19 @@
   }
   
   .post_container {
-    width: 95%;
+    width: 80%;
     height: 600px;
-    top: 130px;
+    top: 140px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+  }
+
+  .page_title {
+    font-size: 34px;
+    text-align: left;
   }
   
   .create_post {
@@ -24,10 +29,11 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: #292828;
+    background-color: #0E4AE2;
     margin: 10px 0;
     border-radius: 5px;
     padding: 5px 5px 5px 5px;
+    border: 1px solid rgb(83, 97, 179);
   }
   
   .inputs_container {
@@ -53,7 +59,7 @@
     border-radius: 3px;
     width: 100%;
     margin: 5px 5px;
-    background-color: rgba(255, 255, 255, 0.781);
+    background-color: rgb(238, 235, 235);
     border: none;
     padding: 5px 5px;
   }
@@ -68,18 +74,13 @@
     margin: 10px 5px;
     border: none;
     border-radius: 5px;
-    background-color: rgba(255, 255, 255, 0.89);
+    background-color: rgb(238, 235, 235);
     padding: 3px 3px 3px 3px;
     line-height: 21px;
     outline: none;
     user-select: text;
     white-space: pre-wrap;
     overflow-wrap: break-word;
-  }
-  
-  .post_container h1 {
-    font-size: 36px;
-    font-weight: 400;
   }
   
   .title_content_container {
@@ -111,8 +112,8 @@
   }
   
   #post_submit {
-    color: rgb(219, 204, 204);
-    background-color: #0E4AE2;
+    color: rgb(238, 235, 235);
+    background-color: #3a3636;
     font-size: 18px;
     border: none;
     width: 150px;
@@ -123,5 +124,5 @@
   }
   
   #post_submit:hover {
-    background-color: #3d6bdd;
+    background-color: #1d1b1b;
   }

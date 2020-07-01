@@ -19,7 +19,8 @@
     overflow: hidden;
     padding: 0 8px 0 4px;
     flex-grow: 1;
-    border: 1px solid grey;
+    border: 2px solid rgb(104, 99, 99);
+    box-shadow: 10px 5px 5px #d6d6d6;
     border-radius: 5px;
     margin: 5px 0;
   }
