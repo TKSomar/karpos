@@ -54,7 +54,7 @@ class Dash extends Component {
 
                         <h2 className="fruit_list_item_title">{elem.name}</h2>
 
-                        <img src={elem.img} width="95px" height="85px" alt="fruit" />
+                        <img src={elem.img} className="fruit_list_item_img" width="145px" height="105px" alt="fruit" />
 
                     </div>
 
@@ -63,7 +63,7 @@ class Dash extends Component {
 
                         <strong>Type</strong><p>{elem.type}</p>
 
-                        <strong>Description</strong><p>{elem.description}</p>
+                        <strong>Description</strong><p className="fruit_list_item_description">{elem.description}</p>
 
                     </div>
 

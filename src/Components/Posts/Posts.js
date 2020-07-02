@@ -8,7 +8,13 @@ class Posts extends Component {
     constructor(props) {
       super(props);
       this.state = {
-        posts: []
+        posts: [],
+        post_id: '',
+        author_id: '',
+        title: '',
+        content: '',
+        img: '',
+        editing: false,
       }
     }
 
@@ -20,6 +26,43 @@ class Posts extends Component {
         this.setState({posts: res.data});
       })
       .catch(err => console.log(err));
+    }
+
+    changeHandler = e => this.setState({ [e.target.name]: e.target.value })
+
+    deletePost = (postId) => {
+      axios.delete(`/api/posts/${postId}`)
+      .then(res => {
+        this.setState({posts: res.data})
+        this.props.history.push('/posts')
+      })
+    }
+
+    editPost = async () => {
+      const {post_id, title, content, img} = this.state,
+      post = (
+        await axios.put(`/api/posts/${post_id}`, {title, content, img})
+        .catch(err => {
+          alert('Something went wrong!')
+          console.log(err)
+        })
+      )
+    }
+
+    toggleEdit = () => {
+      const {editing} = this.state
+      if(editing) {
+        this.getPost()
+      }
+    }
+
+    getPost = () => {
+      const {post_id} = this.props.match.params
+      axios.get(`/api/post/${post_id}`)
+      .then(res => {
+        const {post_id, author_id, title, content, img} = res.data
+        this.setState({post_id, author_id, title, content, img})
+      })
     }
     
     render() {

@@ -84,3 +84,22 @@
     margin: 10px 0;
     font-size: 13px;
   }
+
+  /* Mobile */
+
+  @media(max-width: 480px) {
+    .auth_subtitle {
+      font-size: 14px;
+      text-align: center;
+      padding-bottom: 4px;
+    }
+
+    .auth_container {
+      width: 340px;
+      padding-top: 15px;
+    }
+
+    .auth_input_box {
+      width: 100%;
+    }
+  }

@@ -61,3 +61,27 @@
   .bookmark_btn:hover {
     cursor: pointer;
   }
+
+  /* Mobile */
+
+  @media(max-width: 480px) {
+    .fruit_list_item {
+      height: 250px;
+      margin: 8px 0;
+    }
+
+    .fruit_list_item_title_img_cont {
+      width: 50%;
+      height: 100%;
+      text-align: center;
+    }
+
+    .fruit_list_item_img {
+      width: 120px;
+      height: 110px;
+    }
+
+    .fruit_list_item_title {
+      margin: 2px 0;
+    }
+  }

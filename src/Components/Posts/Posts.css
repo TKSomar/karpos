@@ -69,3 +69,12 @@
   .post_item_img {
     border-radius: 3px;
   }
+
+  /* Movile */
+
+  @media(max-width: 480px) {
+    .post_item_img {
+      height: 125px;
+      width: 150px;
+    }
+  }

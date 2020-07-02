@@ -65,7 +65,7 @@ class Nav extends Component {
 
                     <div className="nav_profile_image_container">
                         <Link to="/profile">
-                            <Avatar name={this.state.user} size="70" round={true} />
+                            <Avatar className="nav_avatar" name={this.state.user} size="70" round={true} />
                         </Link>
                     </div>
 

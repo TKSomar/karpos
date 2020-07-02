@@ -69,3 +69,35 @@
   .register_btn:hover {
     background-color: #3d6bdd;
   }
+
+  /* Mobile */
+
+  @media(max-width: 480px) {
+    .form_container {
+      width: 350px;
+      height: 380px;
+    }
+
+    .register_input_box {
+      font-size: 14px;
+    }
+
+    .register_button_container {
+      width: 80%;
+    }
+
+    .register_btn {
+      font-size: 15px;
+      width: 100%;
+      height: 20px;
+    }
+
+    .have_acc_txt_cont {
+      margin: 4px 0;
+      padding-bottom: 6px;
+    }
+
+    .have_acc_txt_cont a {
+      color: white;
+    }
+  }

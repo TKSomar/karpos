@@ -3,6 +3,7 @@ import axios from 'axios';
 import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
 import './Register.css';
+import {Link} from 'react-router-dom';
 
 class Register extends Component {
     constructor(){
@@ -43,6 +44,10 @@ class Register extends Component {
                 </div>
 
                 <div className="form_container">
+
+                    <div className="have_acc_txt_cont">
+                        <Link to="/"><p>Already have an account? Click here.</p></Link>
+                    </div>
 
                     <div className="register_input_box">
                         <p>First name</p>

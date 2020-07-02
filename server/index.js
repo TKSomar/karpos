@@ -43,6 +43,7 @@ app.get('/api/auth/user', authCtrl.getUser);
 
 // //post endpoints
 app.get('/api/posts', postCtrl.getPosts);
+app.get('/api/posts/:author_id', postCtrl.getUserPosts);
 app.get('/api/post/:post_id', postCtrl.getPost);
 app.post('/api/post', postCtrl.createPost);
 app.put('/api/post/:post_id', postCtrl.editPost);
