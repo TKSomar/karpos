@@ -5,6 +5,7 @@ import Nav from '../Nav/Nav';
 // import './Dashboard.css';
 import Bookmark from '../Bookmark/Bookmark';
 import { StyleSheet, css } from 'aphrodite';
+// import FruitForm from '../FruitForm/FruitForm';
 
 
 class Dash extends Component {
@@ -17,6 +18,8 @@ class Dash extends Component {
             search: '',
             loading: true
         }
+        
+        this.addFruit = this.addFruit.bind(this);
     }
 
     componentDidMount() {
@@ -46,6 +49,16 @@ class Dash extends Component {
         })
     }
 
+    addFruit(newFruit) {
+        axios.post('/api/fruits', newFruit)
+        .then(res => {
+            this.setState({
+                fruits: res.data
+            })
+        })
+        .catch(err => console.log(err))
+    }
+
     render() {
         let fruits = this.state.fruits.map((elem) => {
             return (
@@ -55,7 +68,7 @@ class Dash extends Component {
 
                         <h2 className={css(styles.fruit_list_item_title)}>{elem.name}</h2>
 
-                        <img src={elem.img} className={css(styles.fruit_list_item_img)} width="145px" height="105px" alt="fruit" />
+                        <img src={elem.img} className={css(styles.fruit_list_item_img)} width="165px" height="105px" alt="fruit" />
 
                     </div>
 

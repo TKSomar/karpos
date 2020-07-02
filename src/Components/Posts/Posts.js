@@ -38,10 +38,10 @@ class Posts extends Component {
       })
     }
 
-    editPost = async () => {
-      const {post_id, title, content, img} = this.state,
+    editPost = async (postId) => {
+      const {title, content} = this.state,
       post = (
-        await axios.put(`/api/posts/${post_id}`, {title, content, img})
+        await axios.put(`/api/posts/${postId}`, {title, content})
         .catch(err => {
           alert('Something went wrong!')
           console.log(err)
@@ -49,11 +49,12 @@ class Posts extends Component {
       )
     }
 
-    toggleEdit = () => {
-      const {editing} = this.state
-      if(editing) {
-        this.getPost()
-      }
+    toggleEditOn = () => {
+      this.setState({editing: true})
+    }
+
+    toggleEditOff = () => {
+      this.setState({editing: false})
     }
 
     getPost = () => {
@@ -66,6 +67,7 @@ class Posts extends Component {
     }
     
     render() {
+      const {title, content, img, editing} = this.state;
       let posts = this.state.posts.map((elem) => {
         return (
           <div className="post_list_item" key={elem.id}>
@@ -80,10 +82,16 @@ class Posts extends Component {
 
             <div className="title_content_post_item_cont">
 
-              <h2 className="post_item_title">{elem.title}</h2>
+              {editing ? (
+                <input type="text" name="title" value={elem.title} onChange={this.changeHandler}/>
+              ) : <h2 className="post_item_title">{elem.title}</h2> }
 
                 <div className="post_content_container">
-                  <p className="post_item_content_text">{elem.content}</p>
+
+                  {editing ? (
+                    <textarea name="content" value={elem.content} onChange={this.changeHandler} />
+                  ) : <p className="post_item_content_text">{elem.content}</p> }
+                  
                 </div>
 
             </div>

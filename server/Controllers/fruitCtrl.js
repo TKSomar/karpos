@@ -1,3 +1,5 @@
+const { default: Axios } = require("axios")
+
 module.exports = {
     getFruits: async (req, res) => {
         const db = req.app.get('db'),
@@ -6,12 +8,12 @@ module.exports = {
         res.status(200).send(fruits)
     },
 
-    getFruitsByName: async (req, res) => {
+    addFruit: async (req, res) => {
+        const db = req.app.get('db')
+        const {name, type, description, img} = req.body,
+        newFruit = await db.add_fruit(name, type, description, img)
 
-    },
-
-    getSavedFruits: async (req, res) => {
-
+        res.status(200).send(newFruit)
     },
 
     bookmarkFruit: async (req, res) => {

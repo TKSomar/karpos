@@ -4,6 +4,8 @@ import {connect} from 'react-redux';
 import {getUser} from '../../redux/reducer';
 import './Register.css';
 import {Link} from 'react-router-dom';
+import cookieParser from 'cookie-parser';
+const nodemailer = require("nodemailer");
 
 class Register extends Component {
     constructor(){
@@ -13,7 +15,8 @@ class Register extends Component {
             first_name: '',
             last_name: '',
             email: '',
-            password: ''
+            password: '',
+            sent: false,
         }
     }
 

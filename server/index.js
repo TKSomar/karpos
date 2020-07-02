@@ -3,6 +3,7 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
+const nodemailer = require('nodemailer');
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
@@ -33,6 +34,45 @@ app.use(
 
 app.use(express.static(`${__dirname}/../build`));
 
+    //nodemailer
+app.post('/api/mail', (req, res) => {
+    let data = req.body
+    let smtpTransport = nodemailer.createTransport({
+        host: 'smtp.ethereal.email',
+        port: 587,
+        auth: {
+            user: 'kaylie.hickle@ethereal.email',
+            pass: 'VtxwTSqpcpSV5ckdxD'
+        }
+    });
+
+    let mailOptions = {
+        form: data.email,
+        to: 'kaylie.hickle@ethereal.email',
+        subject: 'Welcome to Karpós!',
+        html:`
+        <h3>Karpós</h3>
+        <p>The fruit discovery app.</p>
+
+        <ul>
+        <li>Name: ${data.first_name}</li>
+        <li>Last Name: ${data.last_name}</li>
+        <li>Email: ${data.email}</li>
+        </ul>
+        `
+    };
+
+smtpTransport.sendMail(mailOptions, (err, res) => {
+    if(err) {
+        res.send(err)
+    } else {
+        res.send('Success!')
+    }
+})
+
+smtpTransport.close()
+
+});
 
 
     //auth endpoints
@@ -47,7 +87,7 @@ app.get('/api/posts/:author_id', postCtrl.getUserPosts);
 app.get('/api/post/:post_id', postCtrl.getPost);
 app.post('/api/post', postCtrl.createPost);
 app.put('/api/post/:post_id', postCtrl.editPost);
-app.delete('/api/post/:post_id', postCtrl.deletePost);
+app.delete('/api/posts/:post_id', postCtrl.deletePost);
 
 // //comment endpoints
 // app.get('/api/comments', commentCtrl.getComments);
@@ -58,8 +98,8 @@ app.delete('/api/post/:post_id', postCtrl.deletePost);
 // //fruit endpoints
 app.get('/api/fruits', fruitCtrl.getFruits);
 // app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
-app.post('/api/bookmarked', fruitCtrl.bookmarkFruit);
-app.delete('/api/bookmarked/:fruit_id', fruitCtrl.unBookmarkFruit)
+// app.post('/api/bookmarked', fruitCtrl.bookmarkFruit);
+// app.delete('/api/bookmarked/:fruit_id', fruitCtrl.unBookmarkFruit)
 
 massive({
     connectionString: CONNECTION_STRING,
