@@ -38,5 +38,12 @@ module.exports = {
         bookmarks = await db.get_bookmarked(id)
 
         res.status(200).send(bookmarks)
+    },
+
+    getBookmarks: async (req, res) => {
+        const db = req.app.get('db'),
+        bookmarks = await db.get_bookmarks()
+
+        res.status(200).send(bookmarks)
     }
 }

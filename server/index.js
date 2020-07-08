@@ -99,6 +99,7 @@ app.delete('/api/posts/:post_id', postCtrl.deletePost);
 app.get('/api/fruits', fruitCtrl.getFruits);
 // app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
 app.post('/api/bookmarked', fruitCtrl.bookmarkFruit);
+app.get('/api/bookmarked', fruitCtrl.getBookmarks);
 app.get('/api/bookmarked/:user_id', fruitCtrl.getBookmarked);
 app.delete('/api/bookmarked/:user_id', fruitCtrl.unBookmarkFruit);
 
