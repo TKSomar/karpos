@@ -47,8 +47,8 @@ app.post('/api/mail', (req, res) => {
     });
 
     let mailOptions = {
-        form: data.email,
-        to: 'kaylie.hickle@ethereal.email',
+        from: 'kaylie.hickle@ethereal.email',
+        to: data.email,
         subject: 'Welcome to Karpós!',
         html:`
         <h3>Karpós</h3>
@@ -98,8 +98,9 @@ app.delete('/api/posts/:post_id', postCtrl.deletePost);
 // //fruit endpoints
 app.get('/api/fruits', fruitCtrl.getFruits);
 // app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
-// app.post('/api/bookmarked', fruitCtrl.bookmarkFruit);
-// app.delete('/api/bookmarked/:fruit_id', fruitCtrl.unBookmarkFruit)
+app.post('/api/bookmarked', fruitCtrl.bookmarkFruit);
+app.get('/api/bookmarked/:user_id', fruitCtrl.getBookmarked);
+app.delete('/api/bookmarked/:user_id', fruitCtrl.unBookmarkFruit);
 
 massive({
     connectionString: CONNECTION_STRING,

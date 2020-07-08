@@ -3,31 +3,53 @@ import axios from 'axios';
 import Nav from '../Nav/Nav';
 import './Profile.css';
 import Avatar from 'react-avatar';
+// import { getBookmarked } from '../../../server/Controllers/fruitCtrl';
+// import { getUser } from '../../redux/reducer';
+// import { getUserPosts } from '../../../server/Controllers/postCtrl';
 
 class Profile extends Component {
     constructor() {
         super();
 
         this.state = {
-            userId: '',
+            user_id: '',
+            user_first: '',
+            user_last: '',
             userPosts: [],
-            savedFruit: []
+            savedFruit: [],
         }
     }
 
-    componenetDidMount() {
-        axios.get('/api/auth/user')
-        .then((req) => {
-            const {id} = req.session.user;
-            this.setState({userId: id})
+    componentDidMount() {
+        this.getUser();
+        this.getBookmarked();
+        this.getUserPosts();
+    }
+
+    getUserPosts = () => {
+        const {user_id} = this.state
+        axios.get(`/api/posts/${user_id}`)
+        .then(res => {
+            this.setState({userPosts: res.data});
         })
         .catch(err => console.log(err));
     }
 
-    getUserPosts = (userId) => {
-        axios.get(`/api/posts/?author_id=${userId}`)
+    getBookmarked = () => {
+        const {user_id} = this.state
+        axios.get(`/api/bookmarked/${user_id}`)
         .then(res => {
-            this.setState({userPosts: res.data})
+            this.setState({savedFruit: res.data})
+        })
+        .catch(err => console.log(err));
+    }
+
+    getUser = () => {
+        axios.get('/api/auth/user')
+        .then(res => {
+            const {id, first_name, last_name} = res.data
+            this.setState({user_id: id, user_first: first_name, user_last: last_name})
+            console.log(this.state)
         })
         .catch(err => console.log(err));
     }
@@ -64,6 +86,14 @@ class Profile extends Component {
           </div>
             )
         })
+
+        let usersFruits = this.state.savedFruit.map((elem) => {
+            return (
+                <div className="fruit_item" key={elem.id}>
+                    <img src={elem.img} className="bookmarked_fruit_img" alt="fruit displayed" />
+                </div>
+            )
+        })
         return (
             <div className="Profile">
 
@@ -71,7 +101,11 @@ class Profile extends Component {
 
                 <div className="profile_container">
 
+                    <h1>{this.state.user_first} {this.state.user_last}</h1>
+
                     {usersPosts}
+
+                    {usersFruits}
 
                 </div>
 

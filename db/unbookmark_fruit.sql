@@ -1,2 +1,2 @@
 DELETE FROM bookmarked
-WHERE id = $1 AND user_id = $2;
+WHERE user_id = $1 AND fruit_id = $2;

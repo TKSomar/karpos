@@ -18,7 +18,7 @@ module.exports = {
     getUserPosts: async (req, res) => {
         const db = req.app.get('db'),
         {author_id} = req.params,
-        userPosts = (await db.get_users_posts(author_id))[0]
+        userPosts = await db.get_users_posts(author_id)
 
         res.status(200).send(userPosts)
     },

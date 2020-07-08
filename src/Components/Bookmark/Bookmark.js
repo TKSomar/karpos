@@ -28,11 +28,24 @@ class Bookmark extends Component {
     }
 
     bookmark = async () => {
+        const {user_id, fruit_id, fruit_name, fruit_type, fruit_description, fruit_img} = this.state
         this.setState({bookmarked: true})
+
+        axios.post('/api/bookmarked/', {user_id, fruit_id, fruit_name, fruit_type, fruit_description, fruit_img})
+        .then(() => {
+            alert('Successfully bookmarked!')
+        })
     }
 
     unBookmark = async () => {
+        const {user_id, fruit_id} = this.state
         this.setState({bookmarked: false})
+
+        axios.delete(`/api/bookmarked/${user_id}`, {fruit_id})
+        .then(() => {
+            alert('Removed from bookmarks.')
+        })
+        .catch(err => console.log(err))
     }
 
     render() {

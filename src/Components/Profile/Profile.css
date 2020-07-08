@@ -70,4 +70,13 @@
     border-radius: 3px;
   }
 
-  
+  .fruit_item {
+    height: 200px;
+    width: 200px;
+  }
+
+  .bookmarked_fruit_img {
+    height: 175px;
+    width: 175px;
+    border-radius: 50%;
+  }
