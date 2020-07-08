@@ -105,7 +105,9 @@ class Profile extends Component {
 
                     {usersPosts}
 
-                    {usersFruits}
+                    <div className="users_fruits_cont">
+                        {usersFruits}
+                    </div>
 
                 </div>
 

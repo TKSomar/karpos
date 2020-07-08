@@ -76,7 +76,16 @@
   }
 
   .bookmarked_fruit_img {
-    height: 175px;
-    width: 175px;
+    height: 135px;
+    width: 135px;
     border-radius: 50%;
+  }
+
+  .users_fruits_cont {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    width: 90%;
+    margin: 15px 0;
   }

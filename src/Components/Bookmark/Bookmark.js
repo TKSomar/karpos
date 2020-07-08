@@ -31,10 +31,11 @@ class Bookmark extends Component {
         const {user_id, fruit_id, fruit_name, fruit_type, fruit_description, fruit_img} = this.state
         this.setState({bookmarked: true})
 
-        axios.post('/api/bookmarked/', {user_id, fruit_id, fruit_name, fruit_type, fruit_description, fruit_img})
+        axios.post('/api/bookmarked/', {fruit_id, user_id, fruit_name, fruit_type, fruit_description, fruit_img})
         .then(() => {
             alert('Successfully bookmarked!')
         })
+        .catch(err => console.log(err))
     }
 
     unBookmark = async () => {
