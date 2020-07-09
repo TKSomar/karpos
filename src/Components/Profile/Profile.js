@@ -17,13 +17,14 @@ class Profile extends Component {
             user_last: '',
             userPosts: [],
             savedFruit: [],
+            isEditing: false,
+            newTitle: '',
+            newContent: '',
         }
     }
 
     componentDidMount() {
         this.getUser();
-        this.getBookmarked();
-        this.getUserPosts();
     }
 
     getUserPosts = () => {
@@ -35,26 +36,50 @@ class Profile extends Component {
         .catch(err => console.log(err));
     }
 
-    getBookmarked = () => {
+    getBookmarked = async () => {
         const {user_id} = this.state
-        axios.get(`/api/bookmarked/${user_id}`)
-        .then(res => {
-            this.setState({savedFruit: res.data})
-        })
-        .catch(err => console.log(err));
+        console.log("hit")
+        console.log(user_id)
+        let userFruits = await axios.get(`/api/bookmarked/${user_id}`)
+        console.log(userFruits)
+        // .then(res => {
+        //     this.setState({savedFruit: res.data});
+        //     console.log(res.data);
+        // })
+        // .catch(err => console.log(err));
     }
 
     getUser = () => {
         axios.get('/api/auth/user')
         .then(res => {
             const {id, first_name, last_name} = res.data
-            this.setState({user_id: id, user_first: first_name, user_last: last_name})
-            console.log(this.state)
+            this.setState({user_id: id, user_first: first_name, user_last: last_name});
+            console.log(this.state.user_id);
+            this.getUserPosts();
+            this.getBookmarked();
         })
         .catch(err => console.log(err));
     }
 
+    editPost = (post_id) => {
+        const {newTitle, newContent} = this.state
+        axios.put(`/api/posts/${post_id}`, {newTitle, newContent})
+        .then(res => {
+            this.setState({userPosts: res.data, isEditing: false,});
+        })
+        .catch(err => console.log(err))
+    }
+
+    toggleEdit = () => {
+        this.setState({isEditing: true,})
+    }
+
+    handleChange = (e) => {
+        this.setState({[e.target.name]: e.target.value})
+    }
+
     render() {
+        const {isEditing} = this.state;
         let usersPosts = this.state.userPosts.map((elem) => {
             return (
                 <div className="post_list_item" key={elem.id}>
@@ -69,10 +94,10 @@ class Profile extends Component {
 
             <div className="title_content_post_item_cont">
 
-              <h2 className="post_item_title">{elem.title}</h2>
+              { isEditing ? <input name="newTitle" id="newTitle" value={this.state.newTitle} type="text" onChange={this.handleChange}></input> : <h2 className="post_item_title">{elem.title}</h2> }
 
                 <div className="post_content_container">
-                  <p className="post_item_content_text">{elem.content}</p>
+                { isEditing ? <textarea name="newContent" id="newContent" value={this.state.newContent} type="text" onChange={this.handleChange}></textarea> : <p className="post_item_content_text">{elem.content}</p> }
                 </div>
 
             </div>
@@ -80,6 +105,19 @@ class Profile extends Component {
             <div className="post_item_img_cont">
 
               <img src={elem.img} height="150px" width="200px" alt="karpos post" className="post_item_img" />
+
+            </div>
+
+            <div className="edit_delete_cont">
+
+
+                <div className="edit_btn_cont">
+                    { isEditing ? <button className="save_btn" onClick={this.editPost(elem.id)}>Save</button> : <button className="edit_btn" onClick={this.toggleEdit}>Edit</button> }
+                </div>
+
+                <div className="delete_btn_cont">
+                    <button className="delete_btn">Delete</button>
+                </div>
 
             </div>
             

@@ -3,7 +3,8 @@ require('dotenv').config();
 const express = require('express');
 const massive = require('massive');
 const session = require('express-session');
-const nodemailer = require('nodemailer');
+const bodyParser = require('body-parser');
+const exphbs = require('express-handlebars');
 
 const {SERVER_PORT, CONNECTION_STRING, SESSION_SECRET} = process.env;
 
@@ -11,10 +12,20 @@ const authCtrl = require('./Controllers/authCtrl');
 const postCtrl = require('./Controllers/postCtrl');
 const fruitCtrl = require('./Controllers/fruitCtrl');
 // const commentCtrl = require('./Controllers/commentCtrl');
+const nodemailerCtrl = require('./Controllers/nodemailerCtrl');
 
 const app = express();
 
 app.use(express.json());
+
+// View engine setup
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+
+// Body Parser Middleware
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
 
 // CORS header `Access-Control-Allow-Origin` set to accept all
 app.use(function(req, res, next) {
@@ -33,47 +44,10 @@ app.use(
     );
 
 app.use(express.static(`${__dirname}/../build`));
-
-    //nodemailer
-app.post('/api/mail', (req, res) => {
-    let data = req.body
-    let smtpTransport = nodemailer.createTransport({
-        host: 'smtp.ethereal.email',
-        port: 587,
-        auth: {
-            user: 'kaylie.hickle@ethereal.email',
-            pass: 'VtxwTSqpcpSV5ckdxD'
-        }
-    });
-
-    let mailOptions = {
-        from: 'kaylie.hickle@ethereal.email',
-        to: data.email,
-        subject: 'Welcome to Karpós!',
-        html:`
-        <h3>Karpós</h3>
-        <p>The fruit discovery app.</p>
-
-        <ul>
-        <li>Name: ${data.first_name}</li>
-        <li>Last Name: ${data.last_name}</li>
-        <li>Email: ${data.email}</li>
-        </ul>
-        `
-    };
-
-smtpTransport.sendMail(mailOptions, (err, res) => {
-    if(err) {
-        res.send(err)
-    } else {
-        res.send('Success!')
-    }
-})
-
-smtpTransport.close()
-
-});
-
+console.log("hit index")
+    
+    // nodemail endpoint
+app.post('/api/mail', nodemailerCtrl.sendMail);
 
     //auth endpoints
 app.post('/api/auth/login', authCtrl.login);
@@ -84,9 +58,9 @@ app.get('/api/auth/user', authCtrl.getUser);
 // //post endpoints
 app.get('/api/posts', postCtrl.getPosts);
 app.get('/api/posts/:author_id', postCtrl.getUserPosts);
-app.get('/api/post/:post_id', postCtrl.getPost);
+// app.get('/api/post/:post_id', postCtrl.getPost);
 app.post('/api/post', postCtrl.createPost);
-app.put('/api/post/:post_id', postCtrl.editPost);
+app.put('/api/posts/:post_id', postCtrl.editPost);
 app.delete('/api/posts/:post_id', postCtrl.deletePost);
 
 // //comment endpoints
@@ -96,12 +70,12 @@ app.delete('/api/posts/:post_id', postCtrl.deletePost);
 // app.delete('/api/comments/:comment_id', commentCtrl.deleteComment);
 
 // //fruit endpoints
-app.get('/api/fruits', fruitCtrl.getFruits);
 // app.get('/api/fruits/:name', fruitCtrl.getFruitsByName);
-app.get('/api/bookmarked', fruitCtrl.getBookmarks);
+app.get('/api/fruits', fruitCtrl.getFruits);
+// app.get('/api/bookmarked', fruitCtrl.getBookmarks);
 app.post('/api/bookmarked', fruitCtrl.bookmarkFruit);
 app.get('/api/bookmarked/:user_id', fruitCtrl.getBookmarked);
-app.delete('/api/bookmarked/:user_id', fruitCtrl.unBookmarkFruit);
+// app.delete('/api/bookmarked/:user_id', fruitCtrl.unBookmarkFruit);
 
 massive({
     connectionString: CONNECTION_STRING,

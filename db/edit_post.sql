@@ -1,7 +1,6 @@
 UPDATE posts
 SET
 title = $1,
-content = $2,
-img = $3
+content = $2
 WHERE
-id = $4 RETURNING *;
+id = $3 RETURNING *;

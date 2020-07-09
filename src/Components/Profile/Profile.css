@@ -89,3 +89,20 @@
     width: 90%;
     margin: 15px 0;
   }
+
+  .edit_delete_cont {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 5px;
+    margin: 0 3px;
+  }
+
+  .edit_btn_cont {
+    margin: 7px 0;
+  }
+
+  .delete_btn_cont {
+    margin: 7px 0;
+  }

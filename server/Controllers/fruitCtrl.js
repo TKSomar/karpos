@@ -34,9 +34,10 @@ module.exports = {
 
     getBookmarked: async (req, res) => {
         const db = req.app.get('db'),
-        {id} = req.params,
-        bookmarks = await db.get_bookmarked(id)
-
+        {user_id} = req.params
+        console.log(user_id)
+        let bookmarks = await db.get_bookmarked(user_id)
+        console.log(bookmarks)
         res.status(200).send(bookmarks)
     },
 

@@ -34,11 +34,11 @@ module.exports = {
 
     editPost: async (req, res) => {
         const db = req.app.get('db'),
-        {title, content} = req.body,
+        {newTitle, newContent} = req.body,
         {post_id} = req.params,
-        post = (await db.edit_post(title, content, post_id))[0]
+        edit = await db.edit_post(newTitle, newContent, post_id)
 
-        res.status(200).send(post)
+        res.status(200).send(edit)
     },
 
     deletePost: async (req, res) => {
