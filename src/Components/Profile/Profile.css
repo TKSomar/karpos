@@ -106,3 +106,68 @@
   .delete_btn_cont {
     margin: 7px 0;
   }
+
+  /* Smartphones (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
+.post_list_item {
+  width: 90%;
+  flex-direction: column;
+}
+
+.post_author_cont {
+  width: 75px;
+}
+
+.title_content_post_item_cont {
+  height: 350px;
+}
+}
+
+/* Smartphones (landscape) ----------- */
+@media only screen 
+and (min-width : 321px) {
+  .post_list_item {
+    width: 90%;
+    flex-direction: column;
+  }
+  
+  .post_author_cont {
+    width: 65px;
+  }
+  
+  .title_content_post_item_cont {
+    height: 350px;
+  }
+}
+
+/* Smartphones (portrait) ----------- */
+@media only screen 
+and (max-width : 320px) {
+  .post_list_item {
+    width: 90%;
+    flex-direction: column;
+  }
+  
+  .post_author_cont {
+    width: 75px;
+  }
+  
+  .title_content_post_item_cont {
+    height: 350px;
+  }
+}
+
+/* iPads (portrait and landscape) ----------- */
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+  .post_list_item {
+    width: 90%;
+  }
+  
+  .title_content_post_item_cont {
+    height: 300px;
+  }
+}

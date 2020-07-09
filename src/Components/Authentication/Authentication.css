@@ -87,7 +87,9 @@
 
   /* Mobile */
 
-  @media(max-width: 480px) {
+  @media only screen 
+and (min-device-width : 320px) 
+and (max-device-width : 480px) {
     .auth_subtitle {
       font-size: 14px;
       text-align: center;
@@ -95,7 +97,7 @@
     }
 
     .auth_container {
-      width: 340px;
+      width: 90%;
       padding-top: 15px;
     }
 
@@ -103,3 +105,22 @@
       width: 100%;
     }
   }
+
+  @media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) {
+  .auth_subtitle {
+    font-size: 14px;
+    text-align: center;
+    padding-bottom: 4px;
+  }
+
+  .auth_container {
+    width: 85%;
+    padding-top: 25px;
+  }
+
+  .auth_input_box {
+    width: 100%;
+  }
+}

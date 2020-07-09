@@ -100,6 +100,11 @@ class Profile extends Component {
         .catch(err => console.log(err))
     }
 
+    deletePost = (post_id) => {
+        const {user_id} = this.state
+        axios.delete(`/api/posts/${user_id}`, {post_id})
+    }
+
     render() {
         const {isEditing} = this.state;
         let usersPosts = this.state.userPosts.map((elem) => {
@@ -139,7 +144,7 @@ class Profile extends Component {
                 </div>
 
                 <div className="delete_btn_cont">
-                    <button className="delete_btn">Delete</button>
+                    <button className="delete_btn" onClick={this.deletePost(elem.id)}>Delete</button>
                 </div>
 
             </div>
