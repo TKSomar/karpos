@@ -36,7 +36,7 @@ module.exports = {
         const db = req.app.get('db'),
         {user_id} = req.params
         console.log(user_id)
-        let bookmarks = await db.get_bookmarked(user_id)
+        let bookmarks = await db.get_bookmarked(author_id)
         console.log(bookmarks)
         res.status(200).send(bookmarks)
     },

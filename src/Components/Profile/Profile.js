@@ -61,11 +61,11 @@ class Profile extends Component {
         .catch(err => console.log(err));
     }
 
-    editPost = (post_id) => {
-        const {newTitle, newContent} = this.state
-        axios.put(`/api/posts/${post_id}`, {newTitle, newContent})
+    editPost = () => {
+        const {newTitle, newContent, user_id} = this.state
+        axios.put(`/api/posts/${user_id}`, {newTitle, newContent})
         .then(res => {
-            this.setState({userPosts: res.data, isEditing: false,});
+            this.getUserPosts();
         })
         .catch(err => console.log(err))
     }
@@ -112,7 +112,8 @@ class Profile extends Component {
 
 
                 <div className="edit_btn_cont">
-                    { isEditing ? <button className="save_btn" onClick={this.editPost(elem.id)}>Save</button> : <button className="edit_btn" onClick={this.toggleEdit}>Edit</button> }
+                    { isEditing ? <button className="save_btn" onClick={this.editPost(elem.id)}>Save</button> : '' }
+                    { isEditing ? '' : <button className="edit_btn" onClick={this.toggleEdit}>Edit</button> }
                 </div>
 
                 <div className="delete_btn_cont">

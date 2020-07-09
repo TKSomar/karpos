@@ -35,8 +35,8 @@ module.exports = {
     editPost: async (req, res) => {
         const db = req.app.get('db'),
         {newTitle, newContent} = req.body,
-        {post_id} = req.params,
-        edit = await db.edit_post(newTitle, newContent, post_id)
+        {author_id} = req.params,
+        edit = await db.edit_post(newTitle, newContent, author_id)
 
         res.status(200).send(edit)
     },
