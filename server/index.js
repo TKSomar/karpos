@@ -13,6 +13,7 @@ const postCtrl = require('./Controllers/postCtrl');
 const fruitCtrl = require('./Controllers/fruitCtrl');
 // const commentCtrl = require('./Controllers/commentCtrl');
 const nodemailerCtrl = require('./Controllers/nodemailerCtrl');
+const userCtrl = require('./Controllers/userCtrl');
 
 const app = express();
 
@@ -54,6 +55,9 @@ app.post('/api/auth/login', authCtrl.login);
 app.post('/api/auth/register', authCtrl.register);
 app.post('/api/auth/logout', authCtrl.logout);
 app.get('/api/auth/user', authCtrl.getUser);
+
+    //user endpoints
+app.put('/api/users/:user_id', userCtrl.editFirst)
 
 // //post endpoints
 app.get('/api/posts', postCtrl.getPosts);

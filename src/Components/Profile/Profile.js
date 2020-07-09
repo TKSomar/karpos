@@ -20,6 +20,8 @@ class Profile extends Component {
             isEditing: false,
             newTitle: '',
             newContent: '',
+            newFirst: '',
+            newLast: ''
         }
     }
 
@@ -78,6 +80,26 @@ class Profile extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
+    editFirstName = () => {
+        const {newFirst, user_id} = this.state
+        axios.put(`/api/users/${user_id}`, {newFirst})
+        .then(() => {
+            alert('Success!')
+            this.getUser()
+        })
+        .catch(err => console.log(err))
+    }
+
+    editLastName = () => {
+        const {newLast, user_id} = this.state
+        axios.put(`/api/users/${user_id}`, {newLast})
+        .then(() => {
+            alert('Success!')
+            this.getUser()
+        })
+        .catch(err => console.log(err))
+    }
+
     render() {
         const {isEditing} = this.state;
         let usersPosts = this.state.userPosts.map((elem) => {
@@ -94,10 +116,10 @@ class Profile extends Component {
 
             <div className="title_content_post_item_cont">
 
-              { isEditing ? <input name="newTitle" id="newTitle" value={this.state.newTitle} type="text" onChange={this.handleChange}></input> : <h2 className="post_item_title">{elem.title}</h2> }
+              <h2 className="post_item_title">{elem.title}</h2>
 
                 <div className="post_content_container">
-                { isEditing ? <textarea name="newContent" id="newContent" value={this.state.newContent} type="text" onChange={this.handleChange}></textarea> : <p className="post_item_content_text">{elem.content}</p> }
+                <p className="post_item_content_text">{elem.content}</p>
                 </div>
 
             </div>
@@ -139,6 +161,22 @@ class Profile extends Component {
                 <Nav />
 
                 <div className="profile_container">
+
+                    <div className="edit_first_name_cont">
+
+                    <input type="text" name="newFirst" id="newFirst" value={this.state.newFirst} placeholder="New First" onChange={this.handleChange}></input>
+
+                    <button>Save</button>
+
+                    </div>
+
+                    <div className="edit_first_name_cont">
+
+                    <input type="text" name="newLast" id="newLast" value={this.state.newLast} placeholder="New Last" onChange={this.handleChange}></input>
+
+                    <button>Save</button>
+
+                    </div>
 
                     <h1>{this.state.user_first} {this.state.user_last}</h1>
 
