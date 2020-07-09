@@ -125,23 +125,6 @@ and (max-device-width : 480px) {
 }
 }
 
-/* Smartphones (landscape) ----------- */
-@media only screen 
-and (min-width : 321px) {
-  .post_list_item {
-    width: 90%;
-    flex-direction: column;
-  }
-  
-  .post_author_cont {
-    width: 65px;
-  }
-  
-  .title_content_post_item_cont {
-    height: 350px;
-  }
-}
-
 /* Smartphones (portrait) ----------- */
 @media only screen 
 and (max-width : 320px) {
