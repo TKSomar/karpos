@@ -34,18 +34,32 @@ module.exports = {
 
     editPost: async (req, res) => {
         const db = req.app.get('db'),
-        {newTitle, newContent} = req.body,
-        {author_id} = req.params,
-        edit = await db.edit_post(newTitle, newContent, author_id)
+        {post_id} = req.params,
+        {id} = req.session.user,
+        {newTitle, newContent} = req.body
 
-        res.status(200).send(edit)
+        const check = await db.check_if_user_is_author(id, post_id)
+
+        if (check.length != 0) {
+            await db.edit_post(newTitle, newContent, post_id)
+            res.status(200).send(`Post successfully edited.`)
+        } else {
+            res.status(500).send(`Whoops, something went wrong! Please try again.`)
+        }
     },
 
     deletePost: async (req, res) => {
         const db = req.app.get('db'),
         {post_id} = req.params,
-        posts = await db.delete_post(post_id)
+        {id} = req.session.user
 
-        res.status(200).send(posts)
+        const check = await db.check_if_user_is_author(id, post_id)
+
+        if (check.length != 0){
+            await db.delete_post(post_id)
+            res.status(200).send(`Post has been deleted.`)
+        } else {
+            res.status(500).send(`Whoops, something went wrong! Please try again.`)
+        }
     }
 }

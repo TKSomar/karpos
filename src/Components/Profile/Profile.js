@@ -19,9 +19,7 @@ class Profile extends Component {
             savedFruit: [],
             isEditing: false,
             newTitle: '',
-            newContent: '',
-            newFirst: '',
-            newLast: ''
+            newContent: ''
         }
     }
 
@@ -63,10 +61,12 @@ class Profile extends Component {
         .catch(err => console.log(err));
     }
 
-    editPost = () => {
-        const {newTitle, newContent, user_id} = this.state
-        axios.put(`/api/posts/${user_id}`, {newTitle, newContent})
+    editPost = (post_id) => {
+        const {newTitle, newContent} = this.state
+        axios.put(`/api/posts/edit/${post_id}`, {newTitle, newContent})
         .then(res => {
+            alert('Post successfully edited!')
+            this.setState({isEditing: false,})
             this.getUserPosts();
         })
         .catch(err => console.log(err))
@@ -80,33 +80,17 @@ class Profile extends Component {
         this.setState({[e.target.name]: e.target.value})
     }
 
-    editFirstName = () => {
-        const {newFirst, user_id} = this.state
-        axios.put(`/api/users/${user_id}`, {newFirst})
-        .then(() => {
-            alert('Success!')
-            this.getUser()
-        })
-        .catch(err => console.log(err))
-    }
-
-    editLastName = () => {
-        const {newLast, user_id} = this.state
-        axios.put(`/api/users/${user_id}`, {newLast})
-        .then(() => {
-            alert('Success!')
-            this.getUser()
-        })
-        .catch(err => console.log(err))
-    }
-
     deletePost = (post_id) => {
-        const {user_id} = this.state
-        axios.delete(`/api/posts/${user_id}`, {post_id})
+        axios.delete(`/api/posts/delete/${post_id}`)
+        .then(() => {
+            alert('Post successfully removed.');
+            this.getUserPosts();
+        })
+        .catch(err => console.log(err))
     }
 
     render() {
-        const {isEditing} = this.state;
+        const {isEditing, newTitle, newContent} = this.state;
         let usersPosts = this.state.userPosts.map((elem) => {
             return (
                 <div className="post_list_item" key={elem.id}>
@@ -121,10 +105,11 @@ class Profile extends Component {
 
             <div className="title_content_post_item_cont">
 
-              <h2 className="post_item_title">{elem.title}</h2>
+            { isEditing ? <div className="title_editing"><input value={newTitle} name="newTitle" onChange={e => this.handleChange(e)} id="edit_title" type="text" /></div> :
+              <h2 className="post_item_title">{elem.title}</h2> }
 
                 <div className="post_content_container">
-                <p className="post_item_content_text">{elem.content}</p>
+                    { isEditing ? <div className="content_editing"><textarea value={newContent} name="newContent" onChange={e => this.handleChange(e)} id="edit_content" type="text" /></div> : <p className="post_item_content_text">{elem.content}</p> }
                 </div>
 
             </div>
@@ -139,12 +124,12 @@ class Profile extends Component {
 
 
                 <div className="edit_btn_cont">
-                    { isEditing ? <button className="save_btn" onClick={this.editPost(elem.id)}>Save</button> : '' }
-                    { isEditing ? '' : <button className="edit_btn" onClick={this.toggleEdit}>Edit</button> }
+                    { isEditing ? <button className="save_btn" onClick={() => {this.editPost(elem.id)}}>Save</button> : '' }
+                    { isEditing ? '' : <button className="edit_btn" onClick={() => {this.toggleEdit()}}>Edit</button> }
                 </div>
 
                 <div className="delete_btn_cont">
-                    <button className="delete_btn" onClick={this.deletePost(elem.id)}>Delete</button>
+                    <button className="delete_btn" onClick={() => {this.deletePost(elem.id)}}>Delete</button>
                 </div>
 
             </div>
@@ -166,22 +151,6 @@ class Profile extends Component {
                 <Nav />
 
                 <div className="profile_container">
-
-                    <div className="edit_first_name_cont">
-
-                    <input type="text" name="newFirst" id="newFirst" value={this.state.newFirst} placeholder="New First" onChange={this.handleChange}></input>
-
-                    <button>Save</button>
-
-                    </div>
-
-                    <div className="edit_first_name_cont">
-
-                    <input type="text" name="newLast" id="newLast" value={this.state.newLast} placeholder="New Last" onChange={this.handleChange}></input>
-
-                    <button>Save</button>
-
-                    </div>
 
                     <h1>{this.state.user_first} {this.state.user_last}</h1>
 

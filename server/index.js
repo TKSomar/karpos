@@ -64,8 +64,8 @@ app.get('/api/posts', postCtrl.getPosts);
 app.get('/api/posts/:author_id', postCtrl.getUserPosts);
 // app.get('/api/post/:post_id', postCtrl.getPost);
 app.post('/api/post', postCtrl.createPost);
-app.put('/api/posts/:author_id', postCtrl.editPost);
-app.delete('/api/posts/:post_id', postCtrl.deletePost);
+app.put('/api/posts/edit/:post_id', postCtrl.editPost);
+app.delete('/api/posts/delete/:post_id', postCtrl.deletePost);
 
 // //comment endpoints
 // app.get('/api/comments', commentCtrl.getComments);
