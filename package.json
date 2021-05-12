@@ -23,7 +23,7 @@
     "grommet-styles": "^0.2.0",
     "massive": "^6.4.0",
     "mdbreact": "^4.27.0",
-    "nodemailer": "^2.7.2",
+    "nodemailer": "^6.4.16",
     "prop-types": "^15.7.2",
     "react": "^16.13.1",
     "react-avatar": "^3.9.7",
